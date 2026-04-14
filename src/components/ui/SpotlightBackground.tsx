@@ -4,9 +4,9 @@ import React, { useState, useEffect, useRef } from "react";
 const SpotlightBackground = () => {
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
   const [isMoving, setIsMoving] = useState(false);
-  const moveTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const lastClient = useRef({ x: 0, y: 0 });
+  const moveTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const updatePosition = (clientX: number, clientY: number) => {
     if (containerRef.current) {
@@ -16,15 +16,15 @@ const SpotlightBackground = () => {
   };
 
   useEffect(() => {
+    // Disable on touch / mobile devices
+    if (window.matchMedia("(pointer: coarse)").matches) return;
+
     const handleMouseMove = (e: MouseEvent) => {
       lastClient.current = { x: e.clientX, y: e.clientY };
       updatePosition(e.clientX, e.clientY);
       setIsMoving(true);
-
       if (moveTimeout.current) clearTimeout(moveTimeout.current);
-      moveTimeout.current = setTimeout(() => {
-        setIsMoving(false);
-      }, 150);
+      moveTimeout.current = setTimeout(() => setIsMoving(false), 150);
     };
 
     const handleScroll = () => {
@@ -40,7 +40,10 @@ const SpotlightBackground = () => {
   }, []);
 
   return (
-    <div ref={containerRef} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", overflow: "hidden", zIndex: 0 }}>
+    <div
+      ref={containerRef}
+      style={{ position: "absolute", inset: 0, width: "100%", height: "100%", overflow: "hidden", zIndex: 0 }}
+    >
       <div
         style={{
           position: "absolute",
@@ -49,8 +52,8 @@ const SpotlightBackground = () => {
           transition: "width 300ms ease-out, height 300ms ease-out",
           left: mouse.x,
           top: mouse.y,
-          width: isMoving ? "90px" : "120px",
-          height: isMoving ? "90px" : "120px",
+          width: isMoving ? "60px" : "80px",
+          height: isMoving ? "60px" : "80px",
           transform: "translate(-50%, -50%)",
           background: "radial-gradient(circle, rgba(0, 6, 65, 0.82) 0%, transparent 48%)",
         }}

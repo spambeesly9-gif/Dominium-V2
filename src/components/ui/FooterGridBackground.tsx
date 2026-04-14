@@ -18,6 +18,8 @@ export default function FooterGridBackground() {
   const lastCellKey = useRef("");
   const rafRef = useRef<number>(0);
 
+  const isMobile = typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches;
+
   const updateCell = useCallback((clientX: number, clientY: number) => {
     const el = containerRef.current;
     if (!el) return;
@@ -35,6 +37,7 @@ export default function FooterGridBackground() {
   }, []);
 
   useEffect(() => {
+    if (isMobile) return;
     const loop = () => {
       const now = Date.now();
       setTrailCells(prev => {
@@ -46,9 +49,10 @@ export default function FooterGridBackground() {
     };
     rafRef.current = requestAnimationFrame(loop);
     return () => cancelAnimationFrame(rafRef.current);
-  }, []);
+  }, [isMobile]);
 
   useEffect(() => {
+    if (isMobile) return;
     const onMove = (e: MouseEvent) => {
       lastClient.current = { x: e.clientX, y: e.clientY };
       updateCell(e.clientX, e.clientY);
@@ -60,7 +64,7 @@ export default function FooterGridBackground() {
       window.removeEventListener("mousemove", onMove);
       window.removeEventListener("scroll", onScroll);
     };
-  }, [updateCell]);
+  }, [updateCell, isMobile]);
 
   const now = Date.now();
 
