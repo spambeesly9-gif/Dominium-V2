@@ -1,0 +1,655 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Book a Demo — Condominium Management Software Malta | Property Management Demo"
+  description="Book a free demo of Dominium, Malta's best condominium and property management software. Our Malta-based team will show you how to automate block management, service charges, and resident communications."
+  keywords="book demo condominium software Malta, property management software demo Malta, contact Dominium Malta, HOA software Malta demo"
+>
+
+  <!-- Page hero -->
+  <section class="page-hero">
+    <div class="page-hero-bg" aria-hidden="true">
+      <div class="ph-aurora"></div>
+      <div class="ph-grid"></div>
+      <div class="ph-blob"></div>
+    </div>
+    <div class="container ph-inner">
+      <div class="badge" style="background:rgb(255 255 255/.1);color:var(--lime);border-color:rgb(227 227 166/.25);margin-bottom:var(--sp-5);">
+        Get in Touch
+      </div>
+      <h1 class="ph-title">Book Your Free Demo<br /><span class="ph-title--accent">or Just Say Hello</span></h1>
+      <p class="ph-sub">Our team is based in Malta and knows the local condominium market. Book a 30-minute demo and we'll show you exactly how Dominium fits your portfolio.</p>
+    </div>
+  </section>
+
+  <!-- Main contact layout -->
+  <section class="section contact-section" id="demo">
+    <div class="container contact-grid">
+
+      <!-- Form -->
+      <div class="contact-form-wrap">
+        <div class="form-header">
+          <h2 class="form-title">Book a Demo</h2>
+          <p class="form-sub">Fill in your details and we'll get back to you within one business day to confirm a time.</p>
+        </div>
+
+        <form
+          class="contact-form"
+          name="demo-request"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          action="/thank-you"
+        >
+          <!-- Honeypot for spam -->
+          <input type="hidden" name="form-name" value="demo-request" />
+          <p style="display:none;"><label>Don't fill this out: <input name="bot-field" /></label></p>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="first-name" class="form-label">First name <span class="required" aria-hidden="true">*</span></label>
+              <input type="text" id="first-name" name="first-name" class="form-input" placeholder="Charles" required autocomplete="given-name" />
+            </div>
+            <div class="form-group">
+              <label for="last-name" class="form-label">Last name <span class="required" aria-hidden="true">*</span></label>
+              <input type="text" id="last-name" name="last-name" class="form-input" placeholder="Borg" required autocomplete="family-name" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email" class="form-label">Email address <span class="required" aria-hidden="true">*</span></label>
+            <input type="email" id="email" name="email" class="form-input" placeholder="charles@example.com" required autocomplete="email" />
+          </div>
+
+          <div class="form-group">
+            <label for="phone" class="form-label">Phone number</label>
+            <input type="tel" id="phone" name="phone" class="form-input" placeholder="+356 XXXX XXXX" autocomplete="tel" />
+          </div>
+
+          <div class="form-group">
+            <label for="company" class="form-label">Company / Organisation</label>
+            <input type="text" id="company" name="company" class="form-input" placeholder="Your property management company" autocomplete="organization" />
+          </div>
+
+          <div class="form-group">
+            <label for="units" class="form-label">Approximate number of units you manage</label>
+            <select id="units" name="units" class="form-select">
+              <option value="" disabled selected>Select a range</option>
+              <option value="1-50">1 – 50 units</option>
+              <option value="51-150">51 – 150 units</option>
+              <option value="151-300">151 – 300 units</option>
+              <option value="301-800">301 – 800 units</option>
+              <option value="801-2000">801 – 2,000 units</option>
+              <option value="2000+">2,000+ units</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message" class="form-label">Anything you'd like us to know?</label>
+            <textarea id="message" name="message" class="form-textarea" rows="4" placeholder="Tell us about your current setup, challenges, or anything specific you'd like to see in the demo..."></textarea>
+          </div>
+
+          <button type="submit" class="form-submit">
+            Request Demo
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+
+          <p class="form-note">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            We respect your privacy. Your data is handled in accordance with GDPR.
+          </p>
+        </form>
+      </div>
+
+      <!-- Info panel -->
+      <div class="contact-info">
+        <!-- What to expect -->
+        <div class="info-card">
+          <h3 class="info-card__title">What to Expect</h3>
+          <ol class="expect-steps">
+            <li class="expect-step">
+              <div class="expect-number">1</div>
+              <div>
+                <strong>Submit the form</strong>
+                <p>Tell us a bit about your portfolio and what you're looking for.</p>
+              </div>
+            </li>
+            <li class="expect-step">
+              <div class="expect-number">2</div>
+              <div>
+                <strong>We'll be in touch</strong>
+                <p>Our Malta-based team will confirm a demo time within one business day.</p>
+              </div>
+            </li>
+            <li class="expect-step">
+              <div class="expect-number">3</div>
+              <div>
+                <strong>30-minute demo</strong>
+                <p>We walk you through Dominium, tailored to your portfolio and needs.</p>
+              </div>
+            </li>
+            <li class="expect-step">
+              <div class="expect-number">4</div>
+              <div>
+                <strong>Go live quickly</strong>
+                <p>Onboarding takes less than a day. Our team handles the setup for you.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+
+        <!-- Contact details -->
+        <div class="info-card">
+          <h3 class="info-card__title">Contact Details</h3>
+          <div class="contact-details">
+            <a href="tel:+35679094887" class="contact-detail">
+              <div class="contact-detail__icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              </div>
+              <div>
+                <div class="contact-detail__label">Phone</div>
+                <div class="contact-detail__value">+356 7909 4887</div>
+              </div>
+            </a>
+            <a href="mailto:hello@dominiumapp.com" class="contact-detail">
+              <div class="contact-detail__icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div>
+                <div class="contact-detail__label">Email</div>
+                <div class="contact-detail__value">hello@dominiumapp.com</div>
+              </div>
+            </a>
+            <div class="contact-detail">
+              <div class="contact-detail__icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div>
+                <div class="contact-detail__label">Address</div>
+                <div class="contact-detail__value">Triq G. Abela, Ħaż-Żebbuġ, Malta</div>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <div class="contact-detail__icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <div>
+                <div class="contact-detail__label">Response time</div>
+                <div class="contact-detail__value">Within 1 business day</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive map -->
+        <div class="info-card map-card">
+          <h3 class="info-card__title">Find Us</h3>
+          <div id="contact-map" class="contact-map"></div>
+          <p class="map-address">Triq G. Abela, Ħaż-Żebbuġ, Malta</p>
+        </div>
+
+        <!-- Trust signals -->
+        <div class="trust-list">
+          <div class="trust-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            No obligation — demo is completely free
+          </div>
+          <div class="trust-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            No setup fee on any plan
+          </div>
+          <div class="trust-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Cancel anytime — no contracts
+          </div>
+          <div class="trust-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            GDPR compliant · EU data hosting
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Screenshots preview -->
+  <section class="screens-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge">See It First</div>
+        <h2>A Quick Look at the Platform</h2>
+        <p>Get a feel for the Dominium interface before your demo.</p>
+      </div>
+
+      <div class="screens-grid">
+        <div class="screen-card">
+          <div class="screen-label">Admin Dashboard</div>
+          <img src="/Images/Home Page1.png" alt="Dominium admin dashboard" loading="lazy" />
+        </div>
+        <div class="screen-card">
+          <div class="screen-label">Contribution Management</div>
+          <img src="/Images/Contributions Page.png" alt="Dominium contributions page" loading="lazy" />
+        </div>
+        <div class="screen-card">
+          <div class="screen-label">Maintenance Requests</div>
+          <img src="/Images/Maintenance Page1.png" alt="Dominium maintenance page" loading="lazy" />
+        </div>
+        <div class="screen-card">
+          <div class="screen-label">Client Portal — Issue Reporting</div>
+          <img src="/Images/Report Issues Page.png" alt="Dominium issue reporting" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<script is:inline>
+  (function () {
+    // Dynamically load Leaflet CSS
+    const css = document.createElement('link');
+    css.rel = 'stylesheet';
+    css.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+    document.head.appendChild(css);
+
+    // Dynamically load Leaflet JS, then init the map
+    const script = document.createElement('script');
+    script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+    script.onload = function () {
+      const L = window.L;
+      const map = L.map('contact-map', { scrollWheelZoom: false }).setView([35.8755, 14.4407], 15);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        maxZoom: 19,
+      }).addTo(map);
+      L.marker([35.8755, 14.4407])
+        .addTo(map)
+        .bindPopup('<b>Dominium</b><br>Triq G. Abela, Ħaż-Żebbuġ, Malta')
+        .openPopup();
+    };
+    document.head.appendChild(script);
+  })();
+</script>
+
+<style>
+  /* ── Page hero ───────────────────────────────────────── */
+  .page-hero {
+    background: var(--navy);
+    position: relative;
+    overflow: hidden;
+    padding: var(--sp-20) 0 var(--sp-16);
+  }
+
+  .page-hero-bg { position: absolute; inset: 0; pointer-events: none; }
+
+  .ph-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgb(255 255 255 / .035) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(255 255 255 / .035) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .ph-blob {
+    position: absolute; border-radius: 50%; filter: blur(100px);
+    width: 500px; height: 400px; top: -200px; right: -100px;
+    background: radial-gradient(circle, rgb(227 227 166 / .12) 0%, transparent 70%);
+  }
+
+  .ph-inner {
+    position: relative; z-index: 1;
+    max-width: 680px;
+  }
+
+  .ph-title {
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.1;
+    letter-spacing: -0.04em;
+    margin-bottom: var(--sp-5);
+  }
+
+  .ph-title--accent { color: var(--lime); }
+
+  .ph-sub {
+    font-size: 1.125rem;
+    color: rgb(255 255 255 / .65);
+    line-height: 1.7;
+  }
+
+  /* ── Contact layout ──────────────────────────────────── */
+  .contact-section { background: var(--white); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--sp-12);
+    align-items: start;
+  }
+
+  @media (min-width: 1024px) {
+    .contact-grid { grid-template-columns: 1.2fr 1fr; }
+  }
+
+  /* ── Form ────────────────────────────────────────────── */
+  .form-header { margin-bottom: var(--sp-8); }
+
+  .form-title {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 800;
+    color: var(--text-dark);
+    letter-spacing: -0.03em;
+    margin-bottom: var(--sp-3);
+  }
+
+  .form-sub {
+    font-size: 1rem;
+    color: var(--slate-500);
+    line-height: 1.65;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-5);
+    background: var(--white);
+    border: 1px solid var(--slate-200);
+    border-radius: var(--r-2xl);
+    padding: var(--sp-8);
+    box-shadow: var(--sh-lg);
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-4);
+  }
+
+  @media (max-width: 480px) {
+    .form-row { grid-template-columns: 1fr; }
+  }
+
+  .form-group { display: flex; flex-direction: column; gap: var(--sp-2); }
+
+  .form-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--slate-700);
+  }
+
+  .required { color: #EF4444; }
+
+  .form-input,
+  .form-select,
+  .form-textarea {
+    font-family: var(--font);
+    font-size: 1rem;
+    color: var(--text-dark);
+    background: var(--white);
+    border: 1.5px solid var(--slate-300);
+    border-radius: var(--r-lg);
+    padding: 0.75rem 1rem;
+    width: 100%;
+    transition: border-color var(--t-fast), box-shadow var(--t-fast);
+    outline: none;
+    appearance: none;
+  }
+
+  .form-input:focus,
+  .form-select:focus,
+  .form-textarea:focus {
+    border-color: var(--navy);
+    box-shadow: 0 0 0 3px var(--navy-50);
+  }
+
+  .form-input::placeholder,
+  .form-textarea::placeholder { color: var(--slate-400); }
+
+  .form-select {
+    background-image: url("data:image/svg+xml,%3Csvg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%2364748B' stroke-width='2.5' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.5rem;
+    cursor: pointer;
+  }
+
+  .form-textarea { resize: vertical; min-height: 100px; }
+
+  .form-submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--sp-2);
+    padding: 1rem var(--sp-6);
+    background: var(--navy);
+    color: var(--white);
+    border: none;
+    border-radius: var(--r-lg);
+    font-size: 1.0625rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all var(--t-base);
+    font-family: var(--font);
+    width: 100%;
+    margin-top: var(--sp-2);
+  }
+
+  .form-submit:hover {
+    background: var(--navy-700);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px -4px rgb(0 4 53 / .4);
+  }
+
+  .form-note {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-2);
+    font-size: 0.8125rem;
+    color: var(--slate-400);
+    text-align: center;
+    justify-content: center;
+  }
+
+  /* ── Info panel ──────────────────────────────────────── */
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-6);
+  }
+
+  .info-card {
+    background: var(--bg-light);
+    border: 1px solid var(--slate-200);
+    border-radius: var(--r-2xl);
+    padding: var(--sp-6);
+  }
+
+  .info-card__title {
+    font-size: 1.0625rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin-bottom: var(--sp-5);
+    padding-bottom: var(--sp-4);
+    border-bottom: 1px solid var(--slate-200);
+  }
+
+  /* Expect steps */
+  .expect-steps {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-5);
+  }
+
+  .expect-step {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--sp-4);
+  }
+
+  .expect-number {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--navy);
+    color: var(--lime);
+    font-size: 0.8125rem;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .expect-step strong {
+    display: block;
+    font-size: 0.9375rem;
+    color: var(--text-dark);
+    margin-bottom: var(--sp-1);
+  }
+
+  .expect-step p {
+    font-size: 0.875rem;
+    color: var(--slate-500);
+    line-height: 1.6;
+  }
+
+  /* Contact details */
+  .contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-4);
+  }
+
+  .contact-detail {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-4);
+    text-decoration: none;
+  }
+
+  a.contact-detail:hover .contact-detail__value { color: var(--navy); }
+
+  .contact-detail__icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: var(--r-lg);
+    background: var(--navy-50);
+    color: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .contact-detail__label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--slate-400);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 2px;
+  }
+
+  .contact-detail__value {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    transition: color var(--t-fast);
+  }
+
+  /* Trust list */
+  .trust-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-3);
+    padding: var(--sp-5);
+    background: var(--navy-50);
+    border: 1px solid var(--navy-100);
+    border-radius: var(--r-xl);
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-3);
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--navy);
+  }
+
+  .trust-item svg { color: var(--success); flex-shrink: 0; }
+
+  /* ── Map card ───────────────────────────────────────── */
+  .contact-map {
+    height: 220px;
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    border: 1px solid var(--slate-200);
+  }
+
+  .map-address {
+    font-size: 0.8125rem;
+    color: var(--slate-500);
+    margin-top: var(--sp-3);
+    display: flex;
+    align-items: center;
+    gap: var(--sp-2);
+  }
+
+  /* ── Screenshots section ─────────────────────────────── */
+  .screens-section {
+    background: var(--bg-light);
+    border-top: 1px solid var(--slate-200);
+    padding: var(--sp-20) 0;
+  }
+
+  .screens-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: var(--sp-5);
+  }
+
+  @media (min-width: 1024px) {
+    .screens-grid { grid-template-columns: repeat(4, 1fr); }
+  }
+
+  .screen-card {
+    border-radius: var(--r-xl);
+    overflow: hidden;
+    border: 1px solid var(--slate-200);
+    box-shadow: var(--sh-md);
+    background: var(--white);
+    transition: all var(--t-slow);
+  }
+
+  .screen-card:hover {
+    border-color: var(--navy-100);
+    box-shadow: var(--sh-xl);
+    transform: translateY(-3px);
+  }
+
+  .screen-label {
+    padding: var(--sp-3) var(--sp-4);
+    background: var(--navy);
+    color: var(--lime);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .screen-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+    transition: transform var(--t-slow);
+  }
+
+  .screen-card:hover img { transform: scale(1.03); }
+</style>

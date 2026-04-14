@@ -1,0 +1,221 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { categories } from '../../data/features.js';
+---
+
+<BaseLayout
+  title="Features — Property Management Software Malta | Block Management System | Dominium"
+  description="Explore Dominium's full feature set: admin dashboard, resident client portal, property accounting integrations, and virtual banking — the complete property management system built for Malta's block managers and HOAs."
+  keywords="property management system Malta, block management software Malta, property admin software Malta, building management software Malta, tenant management system Malta, HOA software Malta, condominium management features Malta"
+>
+
+  <!-- Page hero -->
+  <section class="page-hero">
+    <div class="ph-bg" aria-hidden="true">
+      <div class="ph-aurora"></div>
+      <div class="ph-blob ph-blob--1"></div>
+      <div class="ph-blob ph-blob--2"></div>
+    </div>
+    <div class="container ph-inner">
+      <div class="badge" style="background:rgb(227 227 166/.12);color:var(--lime);border-color:rgb(227 227 166/.3);">All Features</div>
+      <h1 class="ph-title">Everything You Need to Run<br /><span class="ph-accent">Any Condominium in Malta</span></h1>
+      <p class="ph-sub">Dominium is the only platform built specifically for Malta's block managers and HOAs — covering every part of condominium administration in one place.</p>
+    </div>
+  </section>
+
+  <!-- Category grid -->
+  <section class="section cats-section">
+    <div class="container">
+      <div class="cats-grid">
+        {categories.map(cat => (
+          <a href={`/features/${cat.slug}`} class="cat-card">
+            <div class="cat-card__icon" set:html={cat.icon} />
+            <div class="cat-card__body">
+              <h2 class="cat-card__title">{cat.title}</h2>
+              <p class="cat-card__tagline">{cat.tagline}</p>
+              <ul class="cat-card__list">
+                {cat.subFeatures.slice(0, 4).map(f => (
+                  <li>{f.title}</li>
+                ))}
+                {cat.subFeatures.length > 4 && (
+                  <li class="cat-card__more">+{cat.subFeatures.length - 4} more</li>
+                )}
+              </ul>
+            </div>
+            <span class="cat-card__cta">
+              Explore {cat.title}
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="feat-cta">
+    <div class="container feat-cta-inner">
+      <h2>Ready to See Dominium in Action?</h2>
+      <p>Book a free demo and we'll walk you through every feature relevant to your portfolio.</p>
+      <a href="/contact#demo" class="btn btn--accent btn--lg">
+        Book a Free Demo
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  /* ── Page hero ───────────────────────────────────────── */
+  .page-hero {
+    background: var(--navy);
+    position: relative;
+    overflow: hidden;
+    padding: var(--sp-20) 0 var(--sp-16);
+    text-align: center;
+  }
+  .ph-bg { position: absolute; inset: 0; pointer-events: none; }
+  .ph-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+  }
+  .ph-blob--1 {
+    width: 600px; height: 400px;
+    top: -150px; left: -100px;
+    background: radial-gradient(circle, rgba(168,168,60,0.3) 0%, transparent 70%);
+  }
+  .ph-blob--2 {
+    width: 500px; height: 400px;
+    bottom: -100px; right: -100px;
+    background: radial-gradient(circle, rgba(30,60,180,0.4) 0%, transparent 70%);
+  }
+  .ph-inner { position: relative; z-index: 1; }
+  .ph-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 900;
+    color: #ffffff;
+    line-height: 1.12;
+    letter-spacing: -0.035em;
+    margin: var(--sp-5) 0 var(--sp-5);
+  }
+  .ph-accent { color: var(--lime); }
+  .ph-sub {
+    font-size: 1.0625rem;
+    color: rgb(255 255 255 / .7);
+    max-width: 580px;
+    margin: 0 auto;
+    line-height: 1.75;
+  }
+
+  /* ── Category grid ───────────────────────────────────── */
+  .cats-section { background: var(--bg-light); }
+
+  .cats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--sp-6);
+  }
+
+  @media (min-width: 1024px) {
+    .cats-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  .cat-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-5);
+    padding: var(--sp-8);
+    background: var(--white);
+    border: 1px solid var(--slate-200);
+    border-radius: var(--r-2xl);
+    transition: all var(--t-slow);
+    text-decoration: none;
+  }
+  .cat-card:hover {
+    border-color: var(--navy-100);
+    box-shadow: var(--sh-xl);
+    transform: translateY(-4px);
+  }
+
+  .cat-card__icon {
+    width: 3.5rem; height: 3.5rem;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--navy);
+    color: var(--lime);
+    border-radius: var(--r-xl);
+    flex-shrink: 0;
+  }
+
+  .cat-card__title {
+    font-size: 1.375rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    letter-spacing: -0.03em;
+    margin-bottom: var(--sp-2);
+  }
+
+  .cat-card__tagline {
+    font-size: 0.9375rem;
+    color: var(--slate-500);
+    line-height: 1.6;
+    margin-bottom: var(--sp-4);
+  }
+
+  .cat-card__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-2);
+    flex: 1;
+  }
+
+  .cat-card__list li {
+    font-size: 0.875rem;
+    color: var(--slate-600);
+    padding-left: var(--sp-4);
+    position: relative;
+  }
+  .cat-card__list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--navy);
+    font-weight: 700;
+  }
+
+  .cat-card__more { color: var(--slate-400); font-style: italic; }
+
+  .cat-card__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sp-2);
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-top: auto;
+    padding-top: var(--sp-4);
+    border-top: 1px solid var(--slate-100);
+    transition: color var(--t-fast);
+  }
+  .cat-card:hover .cat-card__cta { color: var(--navy-700); }
+
+  /* ── CTA bar ─────────────────────────────────────────── */
+  .feat-cta {
+    background: var(--navy);
+    padding: var(--sp-16) 0;
+    text-align: center;
+  }
+  .feat-cta-inner h2 {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: -0.03em;
+    margin-bottom: var(--sp-4);
+  }
+  .feat-cta-inner p {
+    font-size: 1.0625rem;
+    color: rgb(255 255 255 / .65);
+    margin-bottom: var(--sp-8);
+  }
+</style>

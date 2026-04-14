@@ -1,0 +1,313 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { articles } from '../../data/insights.js';
+
+export function getStaticPaths() {
+  return articles.map(article => ({
+    params: { slug: article.slug },
+    props: { article },
+  }));
+}
+
+const { article } = Astro.props;
+const formattedDate = new Date(article.date).toLocaleDateString('en-GB', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+
+// Pick related articles (same category, not this one)
+const related = articles
+  .filter(a => a.slug !== article.slug && a.category === article.category)
+  .slice(0, 3);
+---
+
+<BaseLayout
+  title={`${article.title} | Dominium Insights`}
+  description={article.metaDescription}
+  keywords={`${article.category.toLowerCase()} Malta, property management Malta, condominium software Malta`}
+>
+
+  <!-- Hero -->
+  <section class="article-hero">
+    <div class="ah-bg" aria-hidden="true">
+      <div class="ah-blob ah-blob--1"></div>
+    </div>
+    <div class="container ah-inner">
+      <div class="ah-breadcrumbs">
+        <a href="/insights">Insights</a>
+        <span>›</span>
+        <span>{article.category}</span>
+      </div>
+      <div class="ah-meta">
+        <span class="ah-cat">{article.category}</span>
+        <span class="ah-sep">·</span>
+        <time datetime={article.date}>{formattedDate}</time>
+        <span class="ah-sep">·</span>
+        <span>{article.readTime}</span>
+      </div>
+      <h1 class="ah-title">{article.title}</h1>
+    </div>
+  </section>
+
+  <!-- Article body -->
+  <section class="article-body-section">
+    <div class="container article-layout">
+
+      <!-- Main content -->
+      <article class="article-content" set:html={article.content} />
+
+      <!-- Sidebar -->
+      <aside class="article-sidebar">
+        <div class="sidebar-cta">
+          <div class="sidebar-cta__badge">Free Demo</div>
+          <h3 class="sidebar-cta__title">See Dominium in Action</h3>
+          <p class="sidebar-cta__desc">Book a personalised walkthrough for your portfolio.</p>
+          <a href="/contact#demo" class="btn btn--accent" style="width:100%;justify-content:center;">
+            Book a Demo
+          </a>
+          <ul class="sidebar-cta__trust">
+            <li>No setup fee</li>
+            <li>Cancel anytime</li>
+            <li>Dedicated support</li>
+          </ul>
+        </div>
+
+        {related.length > 0 && (
+          <div class="sidebar-related">
+            <h3 class="sidebar-related__title">Related Articles</h3>
+            <div class="sidebar-related__list">
+              {related.map(r => (
+                <a href={`/insights/${r.slug}`} class="related-link">
+                  <span class="related-link__cat">{r.category}</span>
+                  <span class="related-link__title">{r.title}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+      </aside>
+
+    </div>
+  </section>
+
+  <!-- Bottom CTA -->
+  <section class="article-cta">
+    <div class="container" style="text-align:center">
+      <h2>Ready to Transform Your Condominium Management?</h2>
+      <p>Book a free demo and see how Dominium fits your portfolio.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="/contact#demo" class="btn btn--accent btn--lg">Book a Free Demo</a>
+        <a href="/insights" class="btn btn--ghost-light btn--lg">More Insights</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  /* ── Hero ────────────────────────────────────────────── */
+  .article-hero {
+    background: var(--navy);
+    position: relative;
+    overflow: hidden;
+    padding: var(--sp-16) 0 var(--sp-12);
+  }
+  .ah-bg { position: absolute; inset: 0; pointer-events: none; }
+  .ah-blob { position: absolute; border-radius: 50%; filter: blur(110px); }
+  .ah-blob--1 { width:600px;height:400px;top:-150px;right:-100px;background:radial-gradient(circle,rgba(30,60,180,.4) 0%,transparent 70%); }
+  .ah-inner { position: relative; z-index: 1; max-width: 780px; }
+  .ah-breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-2);
+    font-size: 0.8125rem;
+    color: rgb(255 255 255 / .45);
+    margin-bottom: var(--sp-5);
+  }
+  .ah-breadcrumbs a { color: rgb(255 255 255 / .5); transition: color var(--t-fast); }
+  .ah-breadcrumbs a:hover { color: var(--lime); }
+  .ah-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-2);
+    font-size: 0.875rem;
+    color: rgb(255 255 255 / .5);
+    margin-bottom: var(--sp-5);
+  }
+  .ah-cat {
+    padding: 2px 8px;
+    background: rgb(227 227 166 / .12);
+    color: var(--lime);
+    border: 1px solid rgb(227 227 166 / .3);
+    border-radius: var(--r-full);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .ah-sep { color: rgb(255 255 255 / .25); }
+  .ah-title {
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    font-weight: 900;
+    color: #ffffff;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+  }
+
+  /* ── Article layout ──────────────────────────────────── */
+  .article-body-section { padding: var(--sp-16) 0; background: var(--white); }
+
+  .article-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--sp-12);
+    align-items: start;
+  }
+
+  @media (min-width: 1024px) {
+    .article-layout { grid-template-columns: 1fr 320px; }
+  }
+
+  /* ── Article content typography ──────────────────────── */
+  .article-content {
+    font-size: 1.0625rem;
+    color: var(--slate-700);
+    line-height: 1.8;
+    max-width: 680px;
+  }
+
+  .article-content :global(h2) {
+    font-size: 1.625rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    letter-spacing: -0.03em;
+    margin: var(--sp-10) 0 var(--sp-4);
+    line-height: 1.2;
+  }
+
+  .article-content :global(h3) {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    letter-spacing: -0.02em;
+    margin: var(--sp-8) 0 var(--sp-3);
+  }
+
+  .article-content :global(p) {
+    margin-bottom: var(--sp-5);
+  }
+
+  .article-content :global(ul) {
+    margin: var(--sp-4) 0 var(--sp-5) var(--sp-5);
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-2);
+  }
+
+  .article-content :global(li) {
+    list-style: disc;
+    color: var(--slate-600);
+  }
+
+  .article-content :global(strong) {
+    color: var(--text-dark);
+    font-weight: 700;
+  }
+
+  /* ── Sidebar ─────────────────────────────────────────── */
+  .sidebar-cta {
+    background: var(--navy);
+    border-radius: var(--r-2xl);
+    padding: var(--sp-6);
+    margin-bottom: var(--sp-6);
+  }
+
+  .sidebar-cta__badge {
+    display: inline-flex;
+    padding: 3px 10px;
+    background: rgb(227 227 166 / .12);
+    color: var(--lime);
+    border: 1px solid rgb(227 227 166 / .3);
+    border-radius: var(--r-full);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: var(--sp-4);
+  }
+
+  .sidebar-cta__title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: var(--sp-3);
+    letter-spacing: -0.02em;
+  }
+
+  .sidebar-cta__desc {
+    font-size: 0.9375rem;
+    color: rgb(255 255 255 / .65);
+    line-height: 1.6;
+    margin-bottom: var(--sp-5);
+  }
+
+  .sidebar-cta__trust {
+    margin-top: var(--sp-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-2);
+  }
+
+  .sidebar-cta__trust li {
+    font-size: 0.8125rem;
+    color: rgb(255 255 255 / .5);
+    padding-left: var(--sp-4);
+    position: relative;
+  }
+  .sidebar-cta__trust li::before { content: '✓'; position: absolute; left: 0; color: var(--lime); font-weight: 700; }
+
+  .sidebar-related { }
+  .sidebar-related__title {
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin-bottom: var(--sp-4);
+    letter-spacing: -0.01em;
+  }
+
+  .sidebar-related__list { display: flex; flex-direction: column; gap: var(--sp-3); }
+
+  .related-link {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: var(--sp-4);
+    background: var(--bg-light);
+    border: 1px solid var(--slate-200);
+    border-radius: var(--r-lg);
+    text-decoration: none;
+    transition: all var(--t-fast);
+  }
+  .related-link:hover { border-color: var(--navy-100); background: var(--white); }
+
+  .related-link__cat {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    color: var(--navy);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .related-link__title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    line-height: 1.3;
+  }
+
+  /* ── Bottom CTA ──────────────────────────────────────── */
+  .article-cta { background: var(--navy); padding: var(--sp-16) 0; }
+  .article-cta h2 { font-size:clamp(1.75rem,4vw,2.5rem);font-weight:900;color:#ffffff;letter-spacing:-0.03em;margin-bottom:var(--sp-4); }
+  .article-cta p { font-size:1.0625rem;color:rgb(255 255 255/.65);margin-bottom:var(--sp-8); }
+</style>

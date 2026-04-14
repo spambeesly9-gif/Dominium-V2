@@ -1,0 +1,111 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { categories } from '../../../data/features.js';
+
+export function getStaticPaths() {
+  const cat = categories.find(c => c.slug === 'admin');
+  return cat.subFeatures.map(f => ({
+    params: { feature: f.slug },
+    props: { feature: f, categorySlug: 'admin', categoryTitle: 'Admin Panel' },
+  }));
+}
+
+const { feature, categorySlug, categoryTitle } = Astro.props;
+---
+
+<BaseLayout
+  title={`${feature.title} — Dominium Admin Features Malta`}
+  description={feature.description}
+  keywords={`${feature.title.toLowerCase()} condominium Malta, ${categoryTitle.toLowerCase()} Malta`}
+>
+
+  <!-- Hero -->
+  <section class="sf-hero">
+    <div class="sfh-bg" aria-hidden="true">
+      <div class="ph-aurora"></div>
+      <div class="sfh-blob sfh-blob--1"></div>
+      <div class="sfh-blob sfh-blob--2"></div>
+    </div>
+    <div class="container sfh-inner">
+      <div class="sfh-breadcrumbs">
+        <a href="/features">Features</a>
+        <span aria-hidden="true">›</span>
+        <a href={`/features/${categorySlug}`}>{categoryTitle}</a>
+        <span aria-hidden="true">›</span>
+        <span>{feature.title}</span>
+      </div>
+      <h1 class="sfh-title">{feature.title}</h1>
+      <p class="sfh-sub">{feature.description}</p>
+      <a href="/contact#demo" class="btn btn--accent btn--lg">
+        Book a Free Demo
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- Screenshot + capabilities -->
+  <section class="section">
+    <div class="container sf-detail">
+      <div class="sfd-visual">
+        <div class="sfd-frame">
+          <div class="sfd-chrome">
+            <div class="sfd-dots">
+              <span style="background:#FF5F57"></span>
+              <span style="background:#FFBD2E"></span>
+              <span style="background:#27C93F"></span>
+            </div>
+          </div>
+          <div class="sfd-body">
+            <img src={feature.image} alt={feature.imageAlt} loading="eager" />
+          </div>
+        </div>
+      </div>
+
+      <div class="sfd-content">
+        <h2 class="sfd-title">Key Capabilities</h2>
+        <ul class="sfd-caps">
+          {feature.capabilities.map(c => (
+            <li class="sfd-cap">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              {c}
+            </li>
+          ))}
+        </ul>
+        <div class="sfd-cta-group">
+          <a href="/contact#demo" class="btn btn--primary btn--lg">Book a Demo</a>
+          <a href={`/features/${categorySlug}`} class="btn btn--outline">
+            ← Back to {categoryTitle}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .sf-hero { background:var(--navy);position:relative;overflow:hidden;padding:var(--sp-16) 0 var(--sp-12); }
+  .sfh-bg { position:absolute;inset:0;pointer-events:none; }
+  .sfh-blob { position:absolute;border-radius:50%;filter:blur(110px); }
+  .sfh-blob--1 { width:500px;height:400px;top:-150px;left:-100px;background:radial-gradient(circle,rgba(168,168,60,.25) 0%,transparent 70%); }
+  .sfh-blob--2 { width:400px;height:300px;bottom:-80px;right:-80px;background:radial-gradient(circle,rgba(30,60,180,.35) 0%,transparent 70%); }
+  .sfh-inner { position:relative;z-index:1; }
+  .sfh-breadcrumbs { display:flex;align-items:center;gap:var(--sp-2);font-size:.8125rem;color:rgb(255 255 255/.45);margin-bottom:var(--sp-5);flex-wrap:wrap; }
+  .sfh-breadcrumbs a { color:rgb(255 255 255/.5);transition:color var(--t-fast); }
+  .sfh-breadcrumbs a:hover { color:var(--lime); }
+  .sfh-breadcrumbs span:last-child { color:var(--lime); }
+  .sfh-title { font-size:clamp(2rem,5vw,3rem);font-weight:900;color:#ffffff;letter-spacing:-0.035em;margin-bottom:var(--sp-5);line-height:1.12; }
+  .sfh-sub { font-size:1.0625rem;color:rgb(255 255 255/.65);max-width:600px;line-height:1.75;margin-bottom:var(--sp-8); }
+  .sf-detail { display:grid;grid-template-columns:1fr;gap:var(--sp-12);align-items:start; }
+  @media (min-width:768px) { .sf-detail { grid-template-columns:1.2fr 1fr; } }
+  .sfd-frame { border-radius:var(--r-2xl);overflow:hidden;border:1px solid var(--slate-200);box-shadow:var(--sh-xl);background:var(--white); }
+  .sfd-chrome { display:flex;align-items:center;padding:.5rem var(--sp-4);background:var(--slate-100);border-bottom:1px solid var(--slate-200); }
+  .sfd-dots { display:flex;gap:5px; }
+  .sfd-dots span { width:10px;height:10px;border-radius:50%;display:block; }
+  .sfd-body img { width:100%;height:auto;display:block; }
+  .sfd-title { font-size:1.5rem;font-weight:800;color:var(--text-dark);letter-spacing:-0.03em;margin-bottom:var(--sp-6); }
+  .sfd-caps { display:flex;flex-direction:column;gap:var(--sp-4);margin-bottom:var(--sp-8); }
+  .sfd-cap { display:flex;align-items:flex-start;gap:var(--sp-3);font-size:1rem;color:var(--slate-700);line-height:1.5; }
+  .sfd-cap svg { color:var(--navy);background:var(--lime);border-radius:50%;padding:3px;width:24px;height:24px;flex-shrink:0;margin-top:1px; }
+  .sfd-cta-group { display:flex;flex-wrap:wrap;gap:var(--sp-3); }
+</style>

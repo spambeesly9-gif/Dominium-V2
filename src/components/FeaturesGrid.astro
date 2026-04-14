@@ -1,0 +1,430 @@
+---
+const adminFeatures = [
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>`,
+    title: 'Block & Condominium Management',
+    desc: 'Create and manage multiple blocks, buildings, and condominiums from a single admin panel. Configure each property independently.',
+    screenshot: '/Images/Condominium Page1.png',
+  },
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>`,
+    title: 'Unit & Client Management',
+    desc: 'Manage every unit and resident with full profiles, contact details, account balances, and communication history in one place.',
+    screenshot: '/Images/Units Page.png',
+  },
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>`,
+    title: 'Contribution Fee Management',
+    desc: 'Issue contribution payment requests to all units, track who has paid, and automate overdue reminders. Real-time collection visibility.',
+    screenshot: '/Images/Contributions Page.png',
+  },
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>`,
+    title: 'Work Requests & Maintenance',
+    desc: 'Residents submit maintenance issues online. Administrators assign work to employees or suppliers and track jobs through to completion.',
+    screenshot: '/Images/Maintenance Page1.png',
+  },
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>`,
+    title: 'Bank Entry Tracking',
+    desc: 'Log all income and expenditure against each condominium. Get a live, accurate picture of the building\'s finances at all times.',
+    screenshot: '/Images/Entries Page1.png',
+  },
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>`,
+    title: 'Client Communications',
+    desc: 'Send notices, announcements, and updates to all residents or individual units. Keep everyone informed without leaving the platform.',
+    screenshot: '/Images/Communications Page.png',
+  },
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>`,
+    title: 'Document & File Management',
+    desc: 'Store AGM minutes, insurance certificates, inspection reports, and building documents. Searchable, organised, and always accessible.',
+    screenshot: '/Images/Files Page1.png',
+  },
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>`,
+    title: 'Cleaning & Inspection Reports',
+    desc: 'Schedule and log cleaning visits and building inspections. Maintain a verifiable record of all property upkeep activities.',
+    screenshot: '/Images/Cleaning and Inspection Reports Page.png',
+  },
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" width="4" height="4" r="4"/><path d="M6 20v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg>`,
+    title: 'Employee & Supplier Management',
+    desc: 'Manage your internal staff and external contractors. Assign work orders, track activity, and keep supplier contact details up to date.',
+    tag: 'Operations',
+    color: 'gold',
+    screenshot: '/Images/Settings_Employees Page.png',
+  },
+];
+
+const clientFeatures = [
+  {
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`,
+    title: 'Issue Reporting',
+    desc: 'Residents report problems directly from their portal — no phone calls or email chains needed.',
+    screenshot: '/Images/Report Issues Page.png',
+  },
+  {
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>`,
+    title: 'Live Balance Visibility',
+    desc: 'Residents see their account balance, payment history, and outstanding contributions in real time.',
+  },
+  {
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>`,
+    title: 'Online Fee Payments',
+    desc: 'Residents pay their contribution fees directly from the portal — fast, secure, and paperless.',
+    screenshot: '/Images/Bills Page.png',
+  },
+  {
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.1 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>`,
+    title: 'Push Notifications (Mobile App)',
+    desc: 'Optional mobile app add-on delivers instant push notifications to residents on iOS and Android.',
+  },
+];
+---
+
+<section class="section features" id="features">
+  <div class="container">
+
+    <!-- Admin features -->
+    <div class="section-header">
+      <div class="badge">Admin Panel</div>
+      <h2>Everything Administrators Need</h2>
+      <p>A complete <strong>block management system</strong> built for Malta's condominium and property administrators.</p>
+    </div>
+
+    <div class="features-grid">
+      {adminFeatures.map((f, i) => (
+        <article class="feature-card" style={`animation-delay: ${i * 0.05}s`}>
+          <div class="feature-card__icon icon-box" set:html={f.icon} />
+          <h3 class="feature-card__title">{f.title}</h3>
+          <p class="feature-card__desc">{f.desc}</p>
+        </article>
+      ))}
+    </div>
+
+    <!-- Client portal features -->
+    <div class="section-header" style="margin-top: var(--sp-20);">
+      <div class="badge badge--lime">Client Portal</div>
+      <h2>A Portal Your Residents Will Love</h2>
+      <p>Every unit gets a private resident portal — accessible on any device, no app download required.</p>
+    </div>
+
+    <div class="client-grid">
+      {clientFeatures.map((f) => (
+        <div class="client-card">
+          <div class="client-card__icon icon-box icon-box--navy" set:html={f.icon} />
+          <div>
+            <h3 class="client-card__title">{f.title}</h3>
+            <p class="client-card__desc">{f.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Accounting integrations callout -->
+    <div class="integrations-callout">
+      <div class="int-callout-left">
+        <div class="badge" style="margin-bottom: var(--sp-4);">Accounting Integrations</div>
+        <h3 class="int-callout-title">Sync with Your Accounting Software</h3>
+        <p class="int-callout-desc">
+          Dominium connects directly with leading accounting platforms — eliminating double-entry and keeping your books accurate automatically.
+        </p>
+        <div class="int-logos">
+          <div class="int-logo-item">
+            <img src="/Xero%20logo.webp" alt="Xero" class="int-logo-img" />
+          </div>
+          <div class="int-logo-item">
+            <img src="/Quickbooks%20logo.png" alt="QuickBooks" class="int-logo-img" />
+          </div>
+          <div class="int-logo-item">
+            <img src="/Zoho%20logo.webp" alt="Zoho Books" class="int-logo-img" />
+          </div>
+          <div class="int-logo-item">
+            <img src="/Fyorin%20logo.webp" alt="Fyorin" class="int-logo-img" />
+          </div>
+        </div>
+      </div>
+      <div class="int-callout-right">
+        <div class="int-callout-img-wrap">
+          <div class="int-callout-chrome">
+            <div class="int-callout-dots">
+              <span style="background:#FF5F57"></span>
+              <span style="background:#FFBD2E"></span>
+              <span style="background:#27C93F"></span>
+            </div>
+          </div>
+          <img
+            src="/Hero%20image.png"
+            alt="Dominium condominium management platform"
+            class="int-callout-img"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .features { background: var(--white); }
+
+  /* ── Admin grid ──────────────────────────────────────── */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: var(--sp-5);
+  }
+
+  @media (min-width: 1024px) {
+    .features-grid { grid-template-columns: repeat(4, 1fr); }
+  }
+
+  /* ── Feature card ────────────────────────────────────── */
+  .feature-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-4);
+    padding: var(--sp-6);
+    background: var(--white);
+    border: 1px solid var(--slate-200);
+    border-radius: var(--r-xl);
+    transition: all var(--t-slow);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .feature-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--navy) 0%, var(--lime) 100%);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--t-slow);
+  }
+
+  .feature-card:hover {
+    border-color: var(--navy-100);
+    box-shadow: var(--sh-lg);
+    transform: translateY(-3px);
+  }
+
+  .feature-card:hover::after { transform: scaleX(1); }
+
+  .feature-card__icon { margin-bottom: var(--sp-1); }
+
+  .feature-card__title {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    line-height: 1.3;
+  }
+
+  .feature-card__desc {
+    font-size: 0.875rem;
+    color: var(--slate-500);
+    line-height: 1.65;
+    flex: 1;
+  }
+
+  .feature-card__thumb {
+    border-radius: var(--r-md);
+    overflow: hidden;
+    border: 1px solid var(--slate-100);
+    margin-top: var(--sp-2);
+    max-height: 120px;
+  }
+
+  .feature-card__thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+    transition: transform var(--t-slow);
+  }
+
+  .feature-card:hover .feature-card__thumb img {
+    transform: scale(1.03);
+  }
+
+  /* ── Client features grid ────────────────────────────── */
+  .client-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: var(--sp-5);
+  }
+
+  @media (min-width: 768px) {
+    .client-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 1024px) {
+    .client-grid { grid-template-columns: repeat(4, 1fr); }
+  }
+
+  .client-card {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--sp-4);
+    padding: var(--sp-6);
+    background: var(--bg-light);
+    border: 1px solid var(--slate-200);
+    border-radius: var(--r-xl);
+    transition: all var(--t-slow);
+  }
+
+  .client-card:hover {
+    border-color: var(--navy-100);
+    box-shadow: var(--sh-md);
+    transform: translateY(-2px);
+  }
+
+  .client-card__title {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: var(--sp-2);
+  }
+
+  .client-card__desc {
+    font-size: 0.875rem;
+    color: var(--slate-500);
+    line-height: 1.65;
+  }
+
+  /* ── Integrations callout ────────────────────────────── */
+  .integrations-callout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--sp-10);
+    align-items: center;
+    margin-top: var(--sp-20);
+    padding: var(--sp-10);
+    background: var(--navy);
+    border-radius: var(--r-2xl);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .integrations-callout::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgb(227 227 166 / .15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  @media (min-width: 768px) {
+    .integrations-callout { grid-template-columns: 1fr 1fr; }
+  }
+
+  .int-callout-left .badge {
+    background: rgb(255 255 255 / .15);
+    color: var(--lime);
+    border-color: rgb(227 227 166 / .3);
+  }
+
+  .int-callout-title {
+    font-size: clamp(1.375rem, 3vw, 2rem);
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+    margin-bottom: var(--sp-4);
+  }
+
+  .int-callout-desc {
+    font-size: 1rem;
+    color: rgb(255 255 255 / .7);
+    line-height: 1.7;
+    margin-bottom: var(--sp-6);
+  }
+
+  .int-logos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-3);
+    align-items: center;
+  }
+
+  .int-logo-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--sp-2) var(--sp-4);
+    background: rgb(255 255 255 / .1);
+    border: 1px solid rgb(255 255 255 / .15);
+    border-radius: var(--r-lg);
+    transition: background var(--t-fast);
+  }
+
+  .int-logo-item:hover {
+    background: rgb(255 255 255 / .18);
+  }
+
+  .int-logo-img {
+    height: 24px;
+    width: auto;
+    display: block;
+  }
+
+  /* Integration flow diagram */
+  .int-flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--sp-4);
+    flex-wrap: wrap;
+  }
+
+  .int-flow-box--navy {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-2);
+    padding: var(--sp-4) var(--sp-5);
+    background: var(--lime);
+    color: var(--navy);
+    border-radius: var(--r-xl);
+    font-weight: 800;
+    font-size: 1rem;
+  }
+
+  .int-flow-arrow {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-2);
+    color: rgb(255 255 255 / .4);
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+
+  .int-flow-logos {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-2);
+  }
+
+  .int-flow-chip {
+    padding: var(--sp-2) var(--sp-4);
+    background: rgb(255 255 255 / .1);
+    border: 1px solid rgb(255 255 255 / .15);
+    border-radius: var(--r-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 110px;
+  }
+
+  .int-flow-logo {
+    height: 20px;
+    width: auto;
+    display: block;
+  }
+</style>

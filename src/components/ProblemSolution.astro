@@ -1,0 +1,199 @@
+---
+const problems = [
+  {
+    text: 'Chasing residents for contribution fees month after month — spreadsheets, phone calls, and unpaid arrears.',
+  },
+  {
+    text: 'Maintenance requests disappear into WhatsApp groups and email threads — nothing tracked, nothing resolved.',
+  },
+  {
+    text: 'No central place for residents to check their balance, pay fees, or report issues — constant interruptions.',
+  },
+  {
+    text: 'Generating AGM financial reports takes hours of manual reconciliation every month.',
+  },
+];
+
+const solutions = [
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>`,
+    title: 'Automated Contribution Collection',
+    text: 'Issue payment requests to all units, accept online payments, and send automatic overdue reminders — zero manual chasing.',
+  },
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>`,
+    title: 'Trackable Work Requests',
+    text: 'Residents submit issues online; administrators assign jobs to employees or suppliers and track completion.',
+  },
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>`,
+    title: 'Resident Self-Service Portal',
+    text: 'Every client logs in to view their balance, pay fees, access documents, and submit requests — without calling you.',
+  },
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>`,
+    title: 'One-Click Financial Reports',
+    text: 'Generate audit-ready income/expenditure statements in seconds. Syncs with Xero, QuickBooks, and Zoho Books.',
+  },
+];
+---
+
+<section class="section prob-sol" id="problem-solution">
+  <div class="container">
+
+    <!-- Problem -->
+    <div class="section-header">
+      <div class="badge">The Problem</div>
+      <h2>Managing Condominiums in Malta<br />Shouldn't Feel Like This</h2>
+      <p>Block managers across Malta waste hours every week on admin that should take minutes. Sound familiar?</p>
+    </div>
+
+    <div class="problems-grid">
+      {problems.map((p, i) => (
+        <div class="problem-card">
+          <div class="problem-number">{String(i + 1).padStart(2, '0')}</div>
+          <p>{p.text}</p>
+        </div>
+      ))}
+    </div>
+
+    <!-- Bridge -->
+    <div class="solution-bridge">
+      <div class="bridge-line" aria-hidden="true"></div>
+      <div class="bridge-pill">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        The Dominium Solution
+      </div>
+      <div class="bridge-line" aria-hidden="true"></div>
+    </div>
+
+    <!-- Solutions -->
+    <div class="solutions-grid">
+      {solutions.map(s => (
+        <div class="solution-card">
+          <div class="icon-box icon-box--lg" set:html={s.icon} />
+          <div>
+            <h3 class="solution-card__title">{s.title}</h3>
+            <p class="solution-card__text">{s.text}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .prob-sol {
+    background: var(--bg-light);
+    border-top: 1px solid var(--slate-200);
+    border-bottom: 1px solid var(--slate-200);
+  }
+
+  /* ── Problems ────────────────────────────────────────── */
+  .problems-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--sp-4);
+    margin-bottom: var(--sp-12);
+  }
+
+  @media (max-width: 640px) {
+    .problems-grid { grid-template-columns: 1fr; }
+  }
+
+  .problem-card {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--sp-4);
+    padding: var(--sp-5) var(--sp-6);
+    background: var(--white);
+    border: 1px solid var(--slate-200);
+    border-radius: var(--r-xl);
+    box-shadow: var(--sh-sm);
+  }
+
+  .problem-number {
+    font-size: 1.25rem;
+    font-weight: 900;
+    color: var(--slate-200);
+    letter-spacing: -0.04em;
+    line-height: 1;
+    flex-shrink: 0;
+    min-width: 2rem;
+  }
+
+  .problem-card p {
+    font-size: 0.9375rem;
+    color: var(--slate-600);
+    line-height: 1.65;
+  }
+
+  /* ── Bridge ──────────────────────────────────────────── */
+  .solution-bridge {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-4);
+    margin-bottom: var(--sp-12);
+  }
+
+  .bridge-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--navy-100), transparent);
+  }
+
+  .bridge-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sp-2);
+    padding: var(--sp-3) var(--sp-5);
+    background: var(--navy);
+    color: var(--lime);
+    border-radius: var(--r-full);
+    font-size: 0.875rem;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  /* ── Solutions ───────────────────────────────────────── */
+  .solutions-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--sp-6);
+  }
+
+  @media (max-width: 640px) {
+    .solutions-grid { grid-template-columns: 1fr; }
+  }
+
+  .solution-card {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--sp-5);
+    padding: var(--sp-6);
+    background: var(--white);
+    border: 1px solid var(--slate-200);
+    border-radius: var(--r-xl);
+    transition: all var(--t-slow);
+  }
+
+  .solution-card:hover {
+    border-color: var(--navy-100);
+    box-shadow: var(--sh-lg);
+    transform: translateY(-2px);
+  }
+
+  .solution-card__title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: var(--sp-2);
+  }
+
+  .solution-card__text {
+    font-size: 0.9375rem;
+    color: var(--slate-500);
+    line-height: 1.65;
+  }
+</style>

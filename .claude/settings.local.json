@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run:*)",
+      "WebFetch(domain:condominiumsoftware.mt)",
+      "Bash(curl -s http://localhost:4321)",
+      "Bash(curl -s \"http://localhost:4321/insights/property-management-software-malta-guide\")",
+      "Bash(curl -s http://localhost:4321/insights)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(git -C \"/Users/kanishkkarande/Desktop/Dominium V2/cd Dominium V2npm run dev\" init)",
+      "Bash(git -C \"/Users/kanishkkarande/Desktop/Dominium V2/cd Dominium V2npm run dev\" remote add origin https://github.com/kanishkkarande/Dominium-V2.git)"
+    ]
+  }
+}

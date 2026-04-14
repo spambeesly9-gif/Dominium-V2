@@ -1,0 +1,266 @@
+---
+const steps = [
+  {
+    number: '01',
+    title: 'Set Up Your Condominiums',
+    desc: 'Add your blocks and buildings, configure units, set contribution fee amounts, and import existing client data. Our onboarding team handles the technical setup.',
+    bullets: [
+      'Add unlimited blocks and units',
+      'Configure per-building fee structures',
+      'Import existing resident records',
+      'Set up employees and supplier contacts',
+    ],
+    screenshot: '/Images/Condominium Page1.png',
+    screenshotAlt: 'Dominium condominium setup screen',
+  },
+  {
+    number: '02',
+    title: 'Clients Access Their Portal',
+    desc: 'Every resident gets a secure login to their personal portal. They can view balances, pay contributions, submit issues, and access building documents — without calling you.',
+    bullets: [
+      'Residents log in from any device',
+      'View live account balance and statements',
+      'Submit maintenance requests directly',
+      'Access building files and notices',
+    ],
+    screenshot: '/Images/Report Issues Page.png',
+    screenshotAlt: 'Dominium resident portal — issue reporting and client view',
+  },
+  {
+    number: '03',
+    title: 'Automate Finance & Reporting',
+    desc: 'Issue contribution requests, track bank entries, sync with Xero or QuickBooks, and generate AGM-ready reports. Dominium handles the admin so you can focus on your portfolio.',
+    bullets: [
+      'Automated contribution invoicing',
+      'Real-time accounting sync',
+      'One-click financial reports',
+      'Overdue reminders sent automatically',
+    ],
+    screenshot: '/Images/Contributions Page.png',
+    screenshotAlt: 'Dominium contributions and finance screen',
+  },
+];
+---
+
+<section class="section how-it-works" id="how-it-works">
+  <div class="container">
+    <div class="section-header">
+      <div class="badge">How It Works</div>
+      <h2>Live in Under a Day. <span class="text-gradient">No IT Team Required.</span></h2>
+      <p>Dominium is designed for non-technical administrators. If you can use a browser, you can run Dominium.</p>
+    </div>
+
+    <div class="steps">
+      {steps.map((step, i) => (
+        <div class={`step-row ${i % 2 === 1 ? 'step-row--reverse' : ''}`}>
+
+          <!-- Content -->
+          <div class="step-content">
+            <div class="step-number">{step.number}</div>
+            <h3 class="step-title">{step.title}</h3>
+            <p class="step-desc">{step.desc}</p>
+            <ul class="step-bullets">
+              {step.bullets.map(b => (
+                <li class="step-bullet">
+                  <svg class="bullet-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                  {b}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <!-- Screenshot visual -->
+          <div class="step-visual">
+            <div class="step-screenshot">
+              <div class="ss-chrome">
+                <div class="ss-dots">
+                  <span style="background:#FF5F57"></span>
+                  <span style="background:#FFBD2E"></span>
+                  <span style="background:#27C93F"></span>
+                </div>
+              </div>
+              <div class="ss-body">
+                <img src={step.screenshot} alt={step.screenshotAlt} loading="lazy" />
+              </div>
+            </div>
+
+            <!-- Step indicator dot (desktop connector) -->
+            <div class="step-dot" aria-hidden="true">
+              <span>{step.number}</span>
+            </div>
+          </div>
+
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .how-it-works {
+    background: var(--bg-light);
+    border-top: 1px solid var(--slate-200);
+    border-bottom: 1px solid var(--slate-200);
+  }
+
+  /* ── Steps layout ────────────────────────────────────── */
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-24);
+  }
+
+  .step-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--sp-10);
+    align-items: center;
+  }
+
+  @media (min-width: 768px) {
+    .step-row {
+      grid-template-columns: 1fr 1fr;
+    }
+    .step-row--reverse .step-visual {
+      order: -1;
+    }
+  }
+
+  /* ── Step content ────────────────────────────────────── */
+  .step-number {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--sp-1) var(--sp-4);
+    background: var(--lime);
+    color: var(--navy);
+    border-radius: var(--r-full);
+    font-size: 0.75rem;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    margin-bottom: var(--sp-4);
+  }
+
+  .step-title {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 800;
+    color: var(--text-dark);
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+    margin-bottom: var(--sp-4);
+  }
+
+  .step-desc {
+    font-size: 1.0625rem;
+    color: var(--slate-600);
+    line-height: 1.7;
+    margin-bottom: var(--sp-6);
+  }
+
+  .step-bullets {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-3);
+  }
+
+  .step-bullet {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-3);
+    font-size: 0.9375rem;
+    color: var(--slate-700);
+    font-weight: 500;
+  }
+
+  .bullet-check {
+    color: var(--navy);
+    background: var(--lime);
+    border-radius: 50%;
+    padding: 2px;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+
+  /* ── Screenshot visual ───────────────────────────────── */
+  .step-visual {
+    position: relative;
+  }
+
+  .step-screenshot {
+    border-radius: var(--r-2xl);
+    overflow: hidden;
+    border: 1px solid var(--slate-200);
+    box-shadow: var(--sh-xl);
+    background: var(--white);
+  }
+
+  .ss-chrome {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-4);
+    padding: 0.5rem var(--sp-4);
+    background: var(--slate-100);
+    border-bottom: 1px solid var(--slate-200);
+  }
+
+  .ss-dots {
+    display: flex;
+    gap: 5px;
+  }
+
+  .ss-dots span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: block;
+    flex-shrink: 0;
+  }
+
+  .ss-url {
+    font-size: 0.6875rem;
+    color: var(--slate-400);
+    font-family: monospace;
+    background: var(--white);
+    border: 1px solid var(--slate-200);
+    padding: 2px 10px;
+    border-radius: var(--r-full);
+    margin: 0 auto;
+  }
+
+  .ss-body {
+    max-height: 340px;
+    overflow: hidden;
+  }
+
+  .ss-body img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    object-position: top;
+  }
+
+  /* Step number dot */
+  .step-dot {
+    position: absolute;
+    bottom: -1.25rem;
+    right: -1rem;
+    width: 3rem;
+    height: 3rem;
+    background: var(--navy);
+    color: var(--lime);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8125rem;
+    font-weight: 900;
+    border: 3px solid var(--white);
+    box-shadow: var(--sh-md);
+  }
+
+  @media (max-width: 767px) {
+    .step-dot { display: none; }
+  }
+</style>

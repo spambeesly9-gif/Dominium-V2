@@ -1,0 +1,151 @@
+---
+---
+
+<section class="platform-preview">
+  <div class="container">
+    <div class="section-header">
+      <div class="badge">The Platform</div>
+      <h2>One Dashboard. <span class="text-gradient">Complete Control.</span></h2>
+      <p>Dominium brings your blocks, clients, finances, and communications into a single, intuitive admin dashboard.</p>
+    </div>
+
+    <div class="preview-wrap">
+      <!-- Browser frame with dashboard screenshot -->
+      <div class="preview-browser">
+        <div class="preview-chrome">
+          <div class="preview-dots" aria-hidden="true">
+            <span style="background:#FF5F57"></span>
+            <span style="background:#FFBD2E"></span>
+            <span style="background:#27C93F"></span>
+          </div>
+        </div>
+        <div class="preview-body">
+          <img
+            src="/Images/Home%20Page1.png"
+            alt="Dominium admin dashboard overview"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      </div>
+
+      <!-- Feature pills overlay -->
+      <div class="preview-pills">
+        <div class="preview-pill preview-pill--1">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Contribution tracking
+        </div>
+        <div class="preview-pill preview-pill--2">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Real-time financials
+        </div>
+        <div class="preview-pill preview-pill--3">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Maintenance workflow
+        </div>
+        <div class="preview-pill preview-pill--4">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Resident portal
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .platform-preview {
+    background: var(--bg-light);
+    border-top: 1px solid var(--slate-200);
+    border-bottom: 1px solid var(--slate-200);
+    padding: var(--sp-20) 0;
+  }
+
+  /* ── Browser frame ───────────────────────────────────── */
+  .preview-wrap { position: relative; }
+
+  .preview-browser {
+    border-radius: var(--r-2xl);
+    overflow: hidden;
+    border: 1px solid var(--slate-200);
+    box-shadow:
+      0 2px 4px rgb(0 0 0 / .04),
+      0 8px 32px rgb(0 0 0 / .08),
+      0 32px 64px rgb(0 0 0 / .08);
+    background: var(--white);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+
+  .preview-browser:hover {
+    transform: translateY(-4px);
+    box-shadow:
+      0 2px 4px rgb(0 0 0 / .04),
+      0 12px 40px rgb(0 0 0 / .12),
+      0 40px 80px rgb(0 0 0 / .1);
+  }
+
+  .preview-chrome {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-3);
+    padding: 0.625rem var(--sp-4);
+    background: var(--slate-100);
+    border-bottom: 1px solid var(--slate-200);
+  }
+
+  .preview-dots {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+
+  .preview-dots span {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    display: block;
+  }
+
+  .preview-body {
+    line-height: 0;
+  }
+
+  .preview-body img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* ── Feature pills ───────────────────────────────────── */
+  .preview-pills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--sp-3);
+    margin-top: var(--sp-8);
+  }
+
+  .preview-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sp-2);
+    padding: var(--sp-2) var(--sp-4);
+    background: var(--white);
+    border: 1px solid var(--navy-100);
+    border-radius: var(--r-full);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--navy);
+    box-shadow: var(--sh-sm);
+    animation: float 4s ease-in-out infinite;
+  }
+
+  .preview-pill svg { color: var(--success); flex-shrink: 0; }
+  .preview-pill--2 { animation-delay: 0.6s; }
+  .preview-pill--3 { animation-delay: 1.2s; }
+  .preview-pill--4 { animation-delay: 1.8s; }
+
+  @media (max-width: 640px) {
+    .preview-pills { gap: var(--sp-2); }
+    .preview-pill  { font-size: 0.8125rem; padding: var(--sp-2) var(--sp-3); }
+  }
+</style>

@@ -1,0 +1,236 @@
+---
+import FooterGridBackground from "./ui/FooterGridBackground";
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <FooterGridBackground client:load />
+  <div class="container footer-inner">
+    <div class="footer-top">
+
+      <!-- Brand column -->
+      <div class="footer-brand">
+        <a href="/" class="footer-logo" aria-label="Dominium home">
+          <img src="/Logo.png" alt="Dominium" class="footer-logo__img" />
+        </a>
+        <p class="footer-tagline">
+          All-in-one condominium management software for Malta's administrators, HOAs, and block managers.
+        </p>
+        <div class="footer-contact">
+          <a href="tel:+35679094887" class="footer-contact-item">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.1 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16z"/></svg>
+            +356 7909 4887
+          </a>
+          <a href="mailto:hello@dominiumapp.com" class="footer-contact-item">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            hello@dominiumapp.com
+          </a>
+          <span class="footer-contact-item">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Triq G. Abela, Ħaż-Żebbuġ, Malta
+          </span>
+        </div>
+
+        <div class="footer-social">
+          <a href="https://www.linkedin.com/company/dominiumapp" target="_blank" rel="noopener noreferrer" aria-label="Dominium on LinkedIn" class="social-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+            <span class="sr-only">LinkedIn</span>
+          </a>
+          <a href="https://www.facebook.com/dominiumapp" target="_blank" rel="noopener noreferrer" aria-label="Dominium on Facebook" class="social-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            <span class="sr-only">Facebook</span>
+          </a>
+          <a href="https://twitter.com/dominiumapp" target="_blank" rel="noopener noreferrer" aria-label="Dominium on Twitter / X" class="social-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            <span class="sr-only">Twitter / X</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Simplified links -->
+      <div class="footer-links">
+        <div class="footer-col">
+          <h3 class="footer-col__title">Quick Links</h3>
+          <ul class="footer-col__list">
+            <li><a href="/" class="footer-col__link">Home</a></li>
+            <li><a href="/features" class="footer-col__link">Features</a></li>
+            <li><a href="/pricing" class="footer-col__link">Pricing</a></li>
+            <li><a href="/insights" class="footer-col__link">Insights</a></li>
+            <li><a href="/contact" class="footer-col__link">Contact</a></li>
+            <li><a href="/contact#demo" class="footer-col__link footer-col__link--cta">Get Started →</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col__title">Legal</h3>
+          <ul class="footer-col__list">
+            <li><a href="/privacy" class="footer-col__link">Privacy Policy</a></li>
+            <li><a href="/terms" class="footer-col__link">Terms of Service</a></li>
+            <li><a href="/gdpr" class="footer-col__link">GDPR Compliance</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="footer-bottom">
+      <p class="footer-copy">
+        &copy; {currentYear} Dominium — a product by Neural AI Ltd. Registered in Malta.
+      </p>
+      <div class="footer-badges">
+        <span class="footer-badge">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          GDPR Compliant
+        </span>
+        <span class="footer-badge">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          Enterprise Security
+        </span>
+        <span class="footer-badge">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+          EU Hosted
+        </span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--navy);
+    color: var(--slate-400);
+    padding-top: var(--sp-16);
+    padding-bottom: var(--sp-8);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Keeps footer content above the grid layer */
+  .footer-inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--sp-12);
+    padding-bottom: var(--sp-12);
+    border-bottom: 1px solid rgb(255 255 255 / .08);
+  }
+
+  @media (min-width: 768px) {
+    .footer-top { grid-template-columns: 1.5fr 1fr; }
+  }
+
+  /* Brand */
+  .footer-logo { display: inline-flex; align-items: center; margin-bottom: var(--sp-5); }
+  .footer-logo__img {
+    height: 36px; width: auto;
+    filter: brightness(0) invert(1);
+    opacity: 0.9;
+  }
+
+  .footer-tagline {
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    margin-bottom: var(--sp-5);
+    color: rgb(255 255 255 / .5);
+    max-width: 340px;
+  }
+
+  .footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-2);
+    margin-bottom: var(--sp-6);
+  }
+
+  .footer-contact-item {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-2);
+    font-size: 0.875rem;
+    color: rgb(255 255 255 / .45);
+    transition: color var(--t-fast);
+    text-decoration: none;
+  }
+  a.footer-contact-item:hover { color: rgb(255 255 255 / .8); }
+
+  .footer-social { display: flex; gap: var(--sp-3); }
+
+  .social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: var(--r-lg);
+    background: rgb(255 255 255 / .07);
+    color: rgb(255 255 255 / .5);
+    border: 1px solid rgb(255 255 255 / .08);
+    transition: all var(--t-base);
+  }
+  .social-link:hover {
+    background: var(--lime);
+    color: var(--navy);
+    border-color: var(--lime);
+    transform: translateY(-2px);
+  }
+
+  /* Link columns */
+  .footer-links {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--sp-8);
+  }
+
+  .footer-col__title {
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: var(--lime);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: var(--sp-4);
+  }
+
+  .footer-col__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-3);
+  }
+
+  .footer-col__link {
+    font-size: 0.9375rem;
+    color: rgb(255 255 255 / .5);
+    transition: color var(--t-fast);
+  }
+  .footer-col__link:hover { color: var(--white); }
+  .footer-col__link--cta { color: var(--lime); font-weight: 600; }
+  .footer-col__link--cta:hover { color: var(--lime-dark); }
+
+  /* Bottom */
+  .footer-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-4);
+    align-items: center;
+    justify-content: space-between;
+    padding-top: var(--sp-8);
+  }
+
+  .footer-copy { font-size: 0.875rem; color: rgb(255 255 255 / .35); }
+
+  .footer-badges { display: flex; align-items: center; gap: var(--sp-3); flex-wrap: wrap; }
+
+  .footer-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sp-1);
+    font-size: 0.75rem;
+    color: rgb(255 255 255 / .4);
+    background: rgb(255 255 255 / .05);
+    border: 1px solid rgb(255 255 255 / .08);
+    padding: var(--sp-1) var(--sp-3);
+    border-radius: var(--r-full);
+  }
+</style>
