@@ -73,13 +73,14 @@ const featuresActive = currentPath.startsWith('/features');
         <a
           href="/features"
           class={`nav-link nav-link--has-arrow ${featuresActive ? 'nav-link--active' : ''}`}
+          {...(featuresActive ? { 'aria-current': 'page' } : {})}
         >
           Features
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="nav-chevron" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
         </a>
 
         <!-- Mega-menu dropdown -->
-        <div class="nav-mega" role="menu">
+        <div class="nav-mega">
           <div class="mega-inner">
             {featuresCategories.map(cat => (
               <div class="mega-col">
@@ -109,9 +110,9 @@ const featuresActive = currentPath.startsWith('/features');
         </div>
       </div>
 
-      <a href="/pricing"  class={`nav-link ${currentPath === '/pricing'  ? 'nav-link--active' : ''}`}>Pricing</a>
-      <a href="/insights" class={`nav-link ${currentPath.startsWith('/insights') ? 'nav-link--active' : ''}`}>Insights</a>
-      <a href="/contact"  class={`nav-link ${currentPath === '/contact'  ? 'nav-link--active' : ''}`}>Contact</a>
+      <a href="/pricing"  class={`nav-link ${currentPath === '/pricing'  ? 'nav-link--active' : ''}`} {...(currentPath === '/pricing'  ? { 'aria-current': 'page' } : {})}>Pricing</a>
+      <a href="/insights" class={`nav-link ${currentPath.startsWith('/insights') ? 'nav-link--active' : ''}`} {...(currentPath.startsWith('/insights') ? { 'aria-current': 'page' } : {})}>Insights</a>
+      <a href="/contact"  class={`nav-link ${currentPath === '/contact'  ? 'nav-link--active' : ''}`} {...(currentPath === '/contact'  ? { 'aria-current': 'page' } : {})}>Contact</a>
     </nav>
 
     <!-- Desktop CTA -->

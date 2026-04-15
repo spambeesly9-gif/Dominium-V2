@@ -38,12 +38,89 @@ const { feature, categorySlug, categoryTitle } = Astro.props;
 
   <section class="section">
     <div class="container sf-detail">
-      <div class="sfd-visual">
-        <div class="sfd-frame">
-          <div class="sfd-chrome"><div class="sfd-dots"><span style="background:#FF5F57"></span><span style="background:#FFBD2E"></span><span style="background:#27C93F"></span></div></div>
-          <div class="sfd-body"><img src={feature.image} alt={feature.imageAlt} loading="eager" /></div>
+
+      {/* ── App icon visual ─────────────────────────────── */}
+      {feature.customVisual === 'phone' ? (
+        <div class="sfd-visual app-visual" aria-hidden="true">
+          <div class="app-stage">
+
+            {/* Pulsing rings */}
+            <div class="ring ring--1"></div>
+            <div class="ring ring--2"></div>
+            <div class="ring ring--3"></div>
+
+            {/* Phone card */}
+            <div class="app-phone">
+              <div class="app-phone__shine"></div>
+
+              <div class="app-phone__notch-bar">
+                <div class="app-phone__notch"></div>
+              </div>
+
+              <div class="app-phone__screen">
+                <div class="app-status">
+                  <span>9:41</span>
+                  <div class="app-status__icons">
+                    <svg width="13" height="9" viewBox="0 0 13 9" fill="currentColor">
+                      <rect x="0" y="3" width="2" height="6" rx="1"/>
+                      <rect x="3" y="2" width="2" height="7" rx="1"/>
+                      <rect x="6" y="0" width="2" height="9" rx="1"/>
+                      <rect x="9" y="0" width="2" height="9" rx="1" opacity=".3"/>
+                    </svg>
+                    <svg width="15" height="9" viewBox="0 0 15 9" fill="none">
+                      <rect x="0.5" y="0.5" width="11" height="8" rx="2" stroke="currentColor"/>
+                      <rect x="12" y="2.5" width="2.5" height="4" rx="1" fill="currentColor" opacity=".4"/>
+                      <rect x="1.5" y="1.5" width="8" height="6" rx="1" fill="currentColor"/>
+                    </svg>
+                  </div>
+                </div>
+
+                <div class="app-notif">
+                  <div class="app-notif__logo">
+                    <img src="/Logo.png" alt="Dominium" class="app-logo-img" />
+                  </div>
+                  <div class="app-notif__content">
+                    <div class="app-notif__title">Dominium</div>
+                    <div class="app-notif__body">AGM scheduled for 15th May</div>
+                  </div>
+                </div>
+
+                <div class="app-icon-area">
+                  <div class="app-icon-tile">
+                    <img src="/Logo.png" alt="Dominium" class="app-logo-img app-logo-img--large" />
+                    <div class="app-badge">2</div>
+                  </div>
+                  <span class="app-icon-label">Dominium</span>
+                </div>
+              </div>
+
+              <div class="app-phone__home">
+                <div class="app-phone__pill"></div>
+              </div>
+            </div>
+
+            {/* Floating tags */}
+            <div class="float-tag float-tag--1">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18.01"/></svg>
+              iOS &amp; Android
+            </div>
+            <div class="float-tag float-tag--2">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0"/></svg>
+              Push Notifications
+            </div>
+            <div class="float-tag float-tag--3">Available Now</div>
+
+          </div>
         </div>
-      </div>
+      ) : (
+        <div class="sfd-visual">
+          <div class="sfd-frame">
+            <div class="sfd-chrome"><div class="sfd-dots"><span style="background:#FF5F57"></span><span style="background:#FFBD2E"></span><span style="background:#27C93F"></span></div></div>
+            <div class="sfd-body"><img src={feature.image} alt={feature.imageAlt} loading="eager" /></div>
+          </div>
+        </div>
+      )}
+
       <div class="sfd-content">
         <h2 class="sfd-title">Key Capabilities</h2>
         <ul class="sfd-caps">
@@ -64,7 +141,8 @@ const { feature, categorySlug, categoryTitle } = Astro.props;
 </BaseLayout>
 
 <style>
-  .sf-hero { background:var(--navy);position:relative;overflow:hidden;padding:var(--sp-16) 0 var(--sp-12); }
+  /* ── Hero ──────────────────────────────────────────────── */
+  .sf-hero { background:var(--navy);position:relative;overflow:hidden;padding:var(--sp-20) 0 var(--sp-16); }
   .sfh-bg { position:absolute;inset:0;pointer-events:none; }
   .sfh-blob { position:absolute;border-radius:50%;filter:blur(110px); }
   .sfh-blob--1 { width:500px;height:400px;top:-150px;left:-100px;background:radial-gradient(circle,rgba(168,168,60,.25) 0%,transparent 70%); }
@@ -76,13 +154,270 @@ const { feature, categorySlug, categoryTitle } = Astro.props;
   .sfh-breadcrumbs span:last-child { color:var(--lime); }
   .sfh-title { font-size:clamp(2rem,5vw,3rem);font-weight:900;color:#ffffff;letter-spacing:-0.035em;margin-bottom:var(--sp-5);line-height:1.12; }
   .sfh-sub { font-size:1.0625rem;color:rgb(255 255 255/.65);max-width:600px;line-height:1.75;margin-bottom:var(--sp-8); }
-  .sf-detail { display:grid;grid-template-columns:1fr;gap:var(--sp-12);align-items:start; }
+
+  /* ── Detail grid ───────────────────────────────────────── */
+  .sf-detail { display:grid;grid-template-columns:1fr;gap:var(--sp-12);align-items:center; }
   @media (min-width:768px) { .sf-detail { grid-template-columns:1.2fr 1fr; } }
+
+  /* ── Browser frame (default) ──────────────────────────── */
   .sfd-frame { border-radius:var(--r-2xl);overflow:hidden;border:1px solid var(--slate-200);box-shadow:var(--sh-xl);background:var(--white); }
   .sfd-chrome { display:flex;align-items:center;padding:.5rem var(--sp-4);background:var(--slate-100);border-bottom:1px solid var(--slate-200); }
   .sfd-dots { display:flex;gap:5px; }
   .sfd-dots span { width:10px;height:10px;border-radius:50%;display:block; }
   .sfd-body img { width:100%;height:auto;display:block; }
+
+  /* ── App icon visual ─────────────────────────────────── */
+  .app-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 380px;
+  }
+
+  .app-stage {
+    position: relative;
+    width: 320px;
+    height: 320px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Pulsing rings */
+  .ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 4, 53, 0.12);
+    animation: ringPulse 3.6s ease-out infinite;
+  }
+  .ring--1 { width: 200px; height: 200px; animation-delay: 0s; }
+  .ring--2 { width: 260px; height: 260px; animation-delay: 0.7s; }
+  .ring--3 { width: 320px; height: 320px; animation-delay: 1.4s; }
+
+  @keyframes ringPulse {
+    0%   { transform: scale(0.85); opacity: 0.7; }
+    100% { transform: scale(1.05); opacity: 0; }
+  }
+
+  /* Phone card */
+  .app-phone {
+    position: relative;
+    width: 150px;
+    height: 285px;
+    background: linear-gradient(160deg, #1c1c2e 0%, #0d0d1a 100%);
+    border-radius: 28px;
+    padding: 7px;
+    box-shadow:
+      0 32px 56px rgba(0,4,53,.45),
+      0 0 0 1px rgba(255,255,255,.12),
+      inset 0 0 0 1px rgba(255,255,255,.05),
+      inset 0 1px 0 rgba(255,255,255,.1);
+    animation: cardFloat 5s ease-in-out infinite;
+    display: flex;
+    flex-direction: column;
+  }
+
+  @keyframes cardFloat {
+    0%, 100% { transform: translateY(0) rotate(-1deg); }
+    50%       { transform: translateY(-8px) rotate(0.5deg); }
+  }
+
+  .app-phone__shine {
+    position: absolute;
+    inset: 0;
+    border-radius: 28px;
+    background: linear-gradient(105deg, transparent 30%, rgba(255,255,255,.07) 50%, transparent 70%);
+    background-size: 200% 100%;
+    animation: cardShine 3.5s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  @keyframes cardShine {
+    0%   { background-position: -100% 0; }
+    60%  { background-position: 200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  .app-phone__notch-bar {
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 6px 0 0;
+    border-radius: 21px 21px 0 0;
+  }
+
+  .app-phone__notch {
+    width: 48px;
+    height: 14px;
+    background: #000;
+    border-radius: 0 0 10px 10px;
+  }
+
+  .app-phone__screen {
+    background: #f5f5f7;
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .app-status {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3px 10px 2px;
+    font-size: 9px;
+    font-weight: 700;
+    color: #0d0d1a;
+  }
+
+  .app-status__icons { display: flex; gap: 3px; align-items: center; color: #0d0d1a; }
+
+  .app-notif {
+    margin: 5px 5px 0;
+    background: rgba(255,255,255,.92);
+    border-radius: 8px;
+    padding: 5px 7px;
+    display: flex;
+    align-items: flex-start;
+    gap: 5px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.08);
+    animation: notifSlide 0.5s cubic-bezier(.22,1,.36,1) both;
+    animation-delay: 0.4s;
+  }
+
+  @keyframes notifSlide {
+    from { opacity: 0; transform: translateY(-8px) scale(0.95); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  .app-notif__logo {
+    width: 22px;
+    height: 22px;
+    background: var(--navy);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  /*
+   * Both logo usages need a portrait-shaped crop.
+   * Logo is 543×166. Any square container shows img_h/img_w = 30.6% of width,
+   * which bleeds into the "Dominium" text. A portrait rectangle (narrower than
+   * tall) shows less horizontal content, cropping to just the icon mark.
+   */
+  .app-logo-img {
+    /* 15×22 inside 22×22 container → shows ~21% of logo = icon only */
+    width: 15px;
+    height: 22px;
+    object-fit: cover;
+    object-position: left center;
+    flex-shrink: 0;
+  }
+
+  .app-logo-img--large {
+    /* 38×52 inside 52×52 container → shows ~22% of logo = icon only */
+    width: 38px;
+    height: 52px;
+    object-fit: cover;
+    object-position: left center;
+    flex-shrink: 0;
+  }
+
+  .app-notif__title { font-size: 8px; font-weight: 800; color: #0d0d1a; }
+  .app-notif__body  { font-size: 7px; color: #555; margin-top: 1px; line-height: 1.3; }
+
+  .app-icon-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    gap: 5px;
+  }
+
+  .app-icon-tile {
+    width: 52px;
+    height: 52px;
+    background: linear-gradient(135deg, var(--navy) 0%, #000a6e 100%);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 14px rgba(0,4,53,.35);
+    position: relative;
+  }
+
+  .app-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    width: 15px;
+    height: 15px;
+    background: #e04040;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 7.5px;
+    font-weight: 800;
+    color: white;
+    border: 1.5px solid #f5f5f7;
+    animation: badgePulse 2s ease-in-out infinite;
+  }
+
+  @keyframes badgePulse {
+    0%, 100% { transform: scale(1); }
+    50%       { transform: scale(1.25); }
+  }
+
+  .app-icon-label { font-size: 9px; color: #444; font-weight: 500; }
+
+  .app-phone__home {
+    background: #f5f5f7;
+    display: flex;
+    justify-content: center;
+    padding: 5px 0 4px;
+    border-radius: 0 0 21px 21px;
+  }
+
+  .app-phone__pill {
+    width: 55px;
+    height: 3px;
+    background: #0d0d1a;
+    border-radius: 2px;
+    opacity: .18;
+  }
+
+  /* Floating tags */
+  .float-tag {
+    position: absolute;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: var(--white);
+    border: 1px solid var(--slate-200);
+    border-radius: var(--r-full);
+    padding: 5px 10px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--navy);
+    box-shadow: 0 4px 12px rgba(0,4,53,.1);
+    white-space: nowrap;
+  }
+
+  .float-tag--1 { top: 24px; right: 4px;  animation: tagFloat1 4s   ease-in-out infinite; }
+  .float-tag--2 { bottom: 52px; left: 0;  animation: tagFloat2 4.5s ease-in-out infinite; }
+  .float-tag--3 { bottom: 16px; right: 8px; animation: tagFloat3 5s ease-in-out infinite; }
+
+  @keyframes tagFloat1 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+  @keyframes tagFloat2 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+  @keyframes tagFloat3 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+
+  /* ── Capabilities & CTA ───────────────────────────────── */
   .sfd-title { font-size:1.5rem;font-weight:800;color:var(--text-dark);letter-spacing:-0.03em;margin-bottom:var(--sp-6); }
   .sfd-caps { display:flex;flex-direction:column;gap:var(--sp-4);margin-bottom:var(--sp-8); }
   .sfd-cap { display:flex;align-items:flex-start;gap:var(--sp-3);font-size:1rem;color:var(--slate-700);line-height:1.5; }

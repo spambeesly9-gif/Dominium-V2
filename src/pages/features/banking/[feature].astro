@@ -38,12 +38,68 @@ const { feature, categorySlug, categoryTitle } = Astro.props;
 
   <section class="section">
     <div class="container sf-detail">
-      <div class="sfd-visual">
-        <div class="sfd-frame">
-          <div class="sfd-chrome"><div class="sfd-dots"><span style="background:#FF5F57"></span><span style="background:#FFBD2E"></span><span style="background:#27C93F"></span></div></div>
-          <div class="sfd-body"><img src={feature.image} alt={feature.imageAlt} loading="eager" /></div>
+
+      {/* ── Animated IBAN icon ──────────────────────────── */}
+      {feature.customVisual === 'iban-icon' ? (
+        <div class="sfd-visual icon-visual" aria-hidden="true">
+          <div class="icon-stage">
+
+            {/* Pulsing rings */}
+            <div class="ring ring--1"></div>
+            <div class="ring ring--2"></div>
+            <div class="ring ring--3"></div>
+
+            {/* Virtual card */}
+            <div class="iban-card">
+              <div class="iban-card__shine"></div>
+
+              <div class="iban-card__top">
+                {/* EMV chip */}
+                <div class="iban-chip">
+                  <div class="iban-chip__h"></div>
+                  <div class="iban-chip__v"></div>
+                  <div class="iban-chip__c"></div>
+                </div>
+                <span class="iban-card__badge">VIRTUAL</span>
+              </div>
+
+              <div class="iban-card__number">
+                <span>MT84</span>
+                <span>••••</span>
+                <span>••••</span>
+                <span>8721</span>
+              </div>
+
+              <div class="iban-card__footer">
+                <span class="iban-card__label">IBAN / BUILDING</span>
+                <svg class="iban-card__logo" width="36" height="22" viewBox="0 0 36 22" fill="none">
+                  <circle cx="14" cy="11" r="10" fill="rgba(227,227,166,0.7)"/>
+                  <circle cx="22" cy="11" r="10" fill="rgba(227,227,166,0.45)"/>
+                </svg>
+              </div>
+            </div>
+
+            {/* Floating data tags */}
+            <div class="float-tag float-tag--1">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+              Block A
+            </div>
+            <div class="float-tag float-tag--2">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              Instant
+            </div>
+            <div class="float-tag float-tag--3">€ Auto-reconciled</div>
+          </div>
         </div>
-      </div>
+      ) : (
+        <div class="sfd-visual">
+          <div class="sfd-frame">
+            <div class="sfd-chrome"><div class="sfd-dots"><span style="background:#FF5F57"></span><span style="background:#FFBD2E"></span><span style="background:#27C93F"></span></div></div>
+            <div class="sfd-body"><img src={feature.image} alt={feature.imageAlt} loading="eager" /></div>
+          </div>
+        </div>
+      )}
+
       <div class="sfd-content">
         <h2 class="sfd-title">Key Capabilities</h2>
         <ul class="sfd-caps">
@@ -64,7 +120,8 @@ const { feature, categorySlug, categoryTitle } = Astro.props;
 </BaseLayout>
 
 <style>
-  .sf-hero { background:var(--navy);position:relative;overflow:hidden;padding:var(--sp-16) 0 var(--sp-12); }
+  /* ── Hero ──────────────────────────────────────────────── */
+  .sf-hero { background:var(--navy);position:relative;overflow:hidden;padding:var(--sp-20) 0 var(--sp-16); }
   .sfh-bg { position:absolute;inset:0;pointer-events:none; }
   .sfh-blob { position:absolute;border-radius:50%;filter:blur(110px); }
   .sfh-blob--1 { width:500px;height:400px;top:-150px;left:-100px;background:radial-gradient(circle,rgba(168,168,60,.25) 0%,transparent 70%); }
@@ -76,13 +133,212 @@ const { feature, categorySlug, categoryTitle } = Astro.props;
   .sfh-breadcrumbs span:last-child { color:var(--lime); }
   .sfh-title { font-size:clamp(2rem,5vw,3rem);font-weight:900;color:#ffffff;letter-spacing:-0.035em;margin-bottom:var(--sp-5);line-height:1.12; }
   .sfh-sub { font-size:1.0625rem;color:rgb(255 255 255/.65);max-width:600px;line-height:1.75;margin-bottom:var(--sp-8); }
-  .sf-detail { display:grid;grid-template-columns:1fr;gap:var(--sp-12);align-items:start; }
+
+  /* ── Detail grid ───────────────────────────────────────── */
+  .sf-detail { display:grid;grid-template-columns:1fr;gap:var(--sp-12);align-items:center; }
   @media (min-width:768px) { .sf-detail { grid-template-columns:1.2fr 1fr; } }
+
+  /* ── Browser frame (default) ──────────────────────────── */
   .sfd-frame { border-radius:var(--r-2xl);overflow:hidden;border:1px solid var(--slate-200);box-shadow:var(--sh-xl);background:var(--white); }
   .sfd-chrome { display:flex;align-items:center;padding:.5rem var(--sp-4);background:var(--slate-100);border-bottom:1px solid var(--slate-200); }
   .sfd-dots { display:flex;gap:5px; }
   .sfd-dots span { width:10px;height:10px;border-radius:50%;display:block; }
   .sfd-body img { width:100%;height:auto;display:block; }
+
+  /* ── IBAN icon stage ───────────────────────────────────── */
+  .icon-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 380px;
+  }
+
+  .icon-stage {
+    position: relative;
+    width: 320px;
+    height: 320px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Pulsing rings */
+  .ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 4, 53, 0.12);
+    animation: ringPulse 3.6s ease-out infinite;
+  }
+  .ring--1 { width: 200px; height: 200px; animation-delay: 0s; }
+  .ring--2 { width: 260px; height: 260px; animation-delay: 0.7s; }
+  .ring--3 { width: 320px; height: 320px; animation-delay: 1.4s; }
+
+  @keyframes ringPulse {
+    0%   { transform: scale(0.85); opacity: 0.7; }
+    100% { transform: scale(1.05); opacity: 0; }
+  }
+
+  /* Card */
+  .iban-card {
+    position: relative;
+    width: 260px;
+    height: 160px;
+    background: linear-gradient(135deg, var(--navy) 0%, #001080 60%, #000a4a 100%);
+    border-radius: 18px;
+    padding: 20px 22px 16px;
+    box-shadow:
+      0 24px 48px rgba(0,4,53,.35),
+      0 0 0 1px rgba(255,255,255,.1),
+      inset 0 1px 0 rgba(255,255,255,.08);
+    animation: cardFloat 5s ease-in-out infinite;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  @keyframes cardFloat {
+    0%, 100% { transform: translateY(0) rotate(-1deg); }
+    50%       { transform: translateY(-8px) rotate(0.5deg); }
+  }
+
+  /* Shine sweep */
+  .iban-card__shine {
+    position: absolute;
+    inset: 0;
+    border-radius: 18px;
+    background: linear-gradient(105deg, transparent 30%, rgba(255,255,255,.07) 50%, transparent 70%);
+    background-size: 200% 100%;
+    animation: cardShine 3.5s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  @keyframes cardShine {
+    0%   { background-position: -100% 0; }
+    60%  { background-position: 200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  .iban-card__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  /* EMV chip */
+  .iban-chip {
+    width: 32px;
+    height: 24px;
+    background: linear-gradient(135deg, #c9c97e, #E3E3A6);
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+  }
+  .iban-chip__h {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: rgba(0,4,53,.35);
+    transform: translateY(-50%);
+  }
+  .iban-chip__v {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: rgba(0,4,53,.35);
+    transform: translateX(-50%);
+  }
+  .iban-chip__c {
+    position: absolute;
+    inset: 5px;
+    border: 1px solid rgba(0,4,53,.2);
+    border-radius: 2px;
+  }
+
+  .iban-card__badge {
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: .12em;
+    color: rgba(227,227,166,.6);
+    margin-top: 4px;
+  }
+
+  .iban-card__number {
+    display: flex;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    color: rgba(255,255,255,.9);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .iban-card__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .iban-card__label {
+    font-size: 8px;
+    letter-spacing: .1em;
+    font-weight: 700;
+    color: rgba(255,255,255,.4);
+    text-transform: uppercase;
+  }
+
+  .iban-card__logo { flex-shrink: 0; }
+
+  /* Floating data tags */
+  .float-tag {
+    position: absolute;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: var(--white);
+    border: 1px solid var(--slate-200);
+    border-radius: var(--r-full);
+    padding: 5px 10px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--navy);
+    box-shadow: 0 4px 12px rgba(0,4,53,.1);
+    white-space: nowrap;
+  }
+
+  .float-tag--1 {
+    top: 28px;
+    right: 10px;
+    animation: tagFloat1 4s ease-in-out infinite;
+  }
+  .float-tag--2 {
+    bottom: 48px;
+    left: 4px;
+    animation: tagFloat2 4.5s ease-in-out infinite;
+  }
+  .float-tag--3 {
+    bottom: 16px;
+    right: 14px;
+    animation: tagFloat3 5s ease-in-out infinite;
+  }
+
+  @keyframes tagFloat1 {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-6px); }
+  }
+  @keyframes tagFloat2 {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-5px); }
+  }
+  @keyframes tagFloat3 {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-7px); }
+  }
+
+  /* ── Capabilities & CTA ───────────────────────────────── */
   .sfd-title { font-size:1.5rem;font-weight:800;color:var(--text-dark);letter-spacing:-0.03em;margin-bottom:var(--sp-6); }
   .sfd-caps { display:flex;flex-direction:column;gap:var(--sp-4);margin-bottom:var(--sp-8); }
   .sfd-cap { display:flex;align-items:flex-start;gap:var(--sp-3);font-size:1rem;color:var(--slate-700);line-height:1.5; }

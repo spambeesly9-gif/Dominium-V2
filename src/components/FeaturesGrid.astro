@@ -96,7 +96,7 @@ const clientFeatures = [
 
     <div class="features-grid">
       {adminFeatures.map((f, i) => (
-        <article class="feature-card" style={`animation-delay: ${i * 0.05}s`}>
+        <article class="feature-card" style={`transition-delay: ${i * 0.07}s`}>
           <div class="feature-card__icon icon-box" set:html={f.icon} />
           <h3 class="feature-card__title">{f.title}</h3>
           <p class="feature-card__desc">{f.desc}</p>

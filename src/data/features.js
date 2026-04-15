@@ -157,8 +157,8 @@ export const categories = [
         slug: 'live-balance',
         title: 'Live Balance & Transparency',
         description: 'Residents see their account balance, payment history, and outstanding contribution fees in real time. Full financial transparency eliminates disputes and unnecessary admin calls.',
-        image: '/Images/Units Page.png',
-        imageAlt: 'Dominium live balance screen',
+        image: '/Images/Settings_Condominium Page.png',
+        imageAlt: 'Dominium condominium settings and live balance screen',
         capabilities: [
           'Real-time account balance display',
           'Full payment history',
@@ -185,8 +185,9 @@ export const categories = [
         slug: 'mobile-app',
         title: 'Mobile App & Push Notifications',
         description: 'The optional Dominium mobile app for iOS and Android gives residents everything from the portal in their pocket. Push notifications keep them instantly informed of important updates.',
-        image: '/Images/Home Page3.png',
+        image: '/App mockup.png',
         imageAlt: 'Dominium mobile app',
+        customVisual: 'phone',
         capabilities: [
           'Native iOS and Android app',
           'Instant push notifications',
@@ -299,8 +300,9 @@ export const categories = [
         slug: 'virtual-iban',
         title: 'Virtual IBAN per Condominium',
         description: 'Every condominium you manage gets its own dedicated virtual IBAN. Payments from residents land in the right account automatically — no manual sorting, no misallocations.',
-        image: '/Images/Settings_Integration Fyorin Page.png',
-        imageAlt: 'Dominium virtual IBAN screen',
+        image: null,
+        imageAlt: null,
+        customVisual: 'iban-icon',
         capabilities: [
           'Dedicated IBAN per building',
           'Automatic payment allocation',
