@@ -1,5 +1,4 @@
 ---
-import BuildingBlocks from "./ui/BuildingBlocks";
 ---
 
 <section class="hero">
@@ -10,7 +9,7 @@ import BuildingBlocks from "./ui/BuildingBlocks";
 
       <div class="hero-badge hero-entrance hero-entrance--1">
         <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        Malta's All-in-One Condominium System
+        AI-Powered · Malta's Condominium Platform
       </div>
 
       <h1 class="hero-headline hero-entrance hero-entrance--2">
@@ -20,9 +19,9 @@ import BuildingBlocks from "./ui/BuildingBlocks";
       </h1>
 
       <p class="hero-sub hero-entrance hero-entrance--3">
-        Dominium is built specifically for Malta's block managers and HOAs —
-        covering contribution fees, maintenance requests, resident portals,
-        and accounting integrations in one place.
+        Dominium brings AI-powered automation to Malta's block managers and HOAs —
+        from instant IBAN creation and intelligent reconciliation to resident portals
+        and accounting integrations, all in one platform.
       </p>
 
       <div class="hero-cta hero-entrance hero-entrance--4">
@@ -35,24 +34,6 @@ import BuildingBlocks from "./ui/BuildingBlocks";
         </a>
       </div>
 
-      <div class="hero-trust hero-entrance hero-entrance--5">
-        <span class="trust-item">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-          No setup fee
-        </span>
-        <span class="trust-item">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-          Quick onboarding
-        </span>
-        <span class="trust-item">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-          Dedicated support
-        </span>
-        <span class="trust-item">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-          Cancel anytime
-        </span>
-      </div>
     </div>
 
     <!-- ── Right: dashboard screenshot + cityscape ──────── -->
@@ -76,9 +57,6 @@ import BuildingBlocks from "./ui/BuildingBlocks";
           height="900"
         />
       </div>
-      <div class="hero-cityscape">
-        <BuildingBlocks client:load />
-      </div>
     </div>
   </div>
 
@@ -97,6 +75,7 @@ import BuildingBlocks from "./ui/BuildingBlocks";
       </div>
     </div>
   </div>
+
 </section>
 
 
@@ -180,24 +159,6 @@ import BuildingBlocks from "./ui/BuildingBlocks";
     gap: var(--sp-3);
     margin-bottom: var(--sp-8);
   }
-
-  /* ── Trust items ─────────────────────────────────────── */
-  .hero-trust {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--sp-2) var(--sp-4);
-  }
-
-  .trust-item {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--sp-2);
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: var(--slate-500);
-  }
-
-  .trust-item svg { color: var(--navy); flex-shrink: 0; }
 
   /* ── Hero visual — dashboard screenshot ─────────────── */
   .hero-visual {
@@ -289,18 +250,6 @@ import BuildingBlocks from "./ui/BuildingBlocks";
     height: 1rem;
     background: var(--slate-200);
     flex-shrink: 0;
-  }
-
-  /* ── Cityscape illustration — bottom of right column ── */
-  .hero-cityscape {
-    width: 100%;
-    line-height: 0;
-    margin-top: auto;
-  }
-
-  /* Hide cityscape on mobile — only meaningful in two-column layout */
-  @media (max-width: 1023px) {
-    .hero-cityscape { display: none; }
   }
 
   /* ── Hero entrance animations ───────────────────────── */
