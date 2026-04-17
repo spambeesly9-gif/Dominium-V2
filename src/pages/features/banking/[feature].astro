@@ -1,10 +1,11 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import FeatureDeepSections from '../../../components/FeatureDeepSections.astro';
 import { categories } from '../../../data/features.js';
 
 export function getStaticPaths() {
   const cat = categories.find(c => c.slug === 'banking');
-  return cat.subFeatures.map(f => ({
+  return cat!.subFeatures.map(f => ({
     params: { feature: f.slug },
     props: { feature: f, categorySlug: 'banking', categoryTitle: 'Banking' },
   }));
@@ -16,8 +17,10 @@ const { feature, categorySlug, categoryTitle } = Astro.props;
 <BaseLayout
   title={`${feature.title} — Dominium Banking Malta`}
   description={feature.description}
-  keywords={`${feature.title.toLowerCase()} condominium Malta, Fyorin property management Malta`}
+  keywords={`${feature.title.toLowerCase()} condominium Malta, Fyorin property management Malta, IBAN condominium Malta`}
 >
+
+  <!-- ── Hero ──────────────────────────────────────────── -->
   <section class="sf-hero">
     <div class="sfh-bg" aria-hidden="true">
       <div class="ph-aurora"></div>
@@ -26,35 +29,39 @@ const { feature, categorySlug, categoryTitle } = Astro.props;
     </div>
     <div class="container sfh-inner">
       <div class="sfh-breadcrumbs">
-        <a href="/features">Features</a><span>›</span>
-        <a href={`/features/${categorySlug}`}>{categoryTitle}</a><span>›</span>
+        <a href="/features">Features</a>
+        <span aria-hidden="true">›</span>
+        <a href={`/features/${categorySlug}`}>{categoryTitle}</a>
+        <span aria-hidden="true">›</span>
         <span>{feature.title}</span>
       </div>
       <h1 class="sfh-title">{feature.title}</h1>
       <p class="sfh-sub">{feature.description}</p>
-      <a href="/contact#demo" class="btn btn--accent btn--lg">Book a Free Demo <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      <div class="sfh-actions">
+        <a href="/contact#demo" class="btn btn--accent btn--lg">
+          Book a Free Demo
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href={`/features/${categorySlug}`} class="sfh-back">← Back to {categoryTitle}</a>
+      </div>
     </div>
   </section>
 
-  <section class="section">
-    <div class="container sf-detail">
+  <!-- ── Visual + capabilities ─────────────────────────── -->
+  <section class="section sf-overview">
+    <div class="container sf-overview-inner">
 
-      {/* ── Animated IBAN icon ──────────────────────────── */}
+      {/* ── Animated IBAN card (virtual-iban feature) ───── */}
       {feature.customVisual === 'iban-icon' ? (
         <div class="sfd-visual icon-visual" aria-hidden="true">
           <div class="icon-stage">
-
-            {/* Pulsing rings */}
             <div class="ring ring--1"></div>
             <div class="ring ring--2"></div>
             <div class="ring ring--3"></div>
 
-            {/* Virtual card */}
             <div class="iban-card">
               <div class="iban-card__shine"></div>
-
               <div class="iban-card__top">
-                {/* EMV chip */}
                 <div class="iban-chip">
                   <div class="iban-chip__h"></div>
                   <div class="iban-chip__v"></div>
@@ -62,14 +69,12 @@ const { feature, categorySlug, categoryTitle } = Astro.props;
                 </div>
                 <span class="iban-card__badge">VIRTUAL</span>
               </div>
-
               <div class="iban-card__number">
                 <span>MT84</span>
                 <span>••••</span>
                 <span>••••</span>
                 <span>8721</span>
               </div>
-
               <div class="iban-card__footer">
                 <span class="iban-card__label">IBAN / BUILDING</span>
                 <svg class="iban-card__logo" width="36" height="22" viewBox="0 0 36 22" fill="none">
@@ -79,7 +84,6 @@ const { feature, categorySlug, categoryTitle } = Astro.props;
               </div>
             </div>
 
-            {/* Floating data tags */}
             <div class="float-tag float-tag--1">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
               Block A
@@ -92,83 +96,166 @@ const { feature, categorySlug, categoryTitle } = Astro.props;
           </div>
         </div>
       ) : (
+        /* ── Default browser frame ──────────────────────── */
         <div class="sfd-visual">
           <div class="sfd-frame">
-            <div class="sfd-chrome"><div class="sfd-dots"><span style="background:#FF5F57"></span><span style="background:#FFBD2E"></span><span style="background:#27C93F"></span></div></div>
-            <div class="sfd-body"><img src={feature.image} alt={feature.imageAlt} loading="eager" /></div>
+            <div class="sfd-chrome">
+              <div class="sfd-dots">
+                <span style="background:#FF5F57"></span>
+                <span style="background:#FFBD2E"></span>
+                <span style="background:#27C93F"></span>
+              </div>
+            </div>
+            <div class="sfd-body">
+              <img src={feature.image} alt={feature.imageAlt} loading="eager" />
+            </div>
           </div>
         </div>
       )}
 
       <div class="sfd-content">
-        <h2 class="sfd-title">Key Capabilities</h2>
+        <h2 class="sfd-caps-title">Key Capabilities</h2>
         <ul class="sfd-caps">
           {feature.capabilities.map(c => (
             <li class="sfd-cap">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              {c}
+              <div class="sfd-cap__dot" aria-hidden="true">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <span>{c}</span>
             </li>
           ))}
         </ul>
-        <div class="sfd-cta-group">
-          <a href="/contact#demo" class="btn btn--primary btn--lg">Book a Demo</a>
-          <a href={`/features/${categorySlug}`} class="btn btn--outline">← Back to {categoryTitle}</a>
-        </div>
+        <a href="/contact#demo" class="btn btn--primary btn--lg">Book a Demo</a>
       </div>
+
     </div>
   </section>
+
+  <!-- ── Deep sections + bottom CTA ────────────────────── -->
+  <FeatureDeepSections feature={feature} categorySlug={categorySlug} categoryTitle={categoryTitle} />
+
 </BaseLayout>
 
 <style>
-  /* ── Hero ──────────────────────────────────────────────── */
-  .sf-hero { background:var(--navy);position:relative;overflow:hidden;padding:var(--sp-20) 0 var(--sp-16); }
-  .sfh-bg { position:absolute;inset:0;pointer-events:none; }
-  .sfh-blob { position:absolute;border-radius:50%;filter:blur(110px); }
-  .sfh-blob--1 { width:500px;height:400px;top:-150px;left:-100px;background:radial-gradient(circle,rgba(168,168,60,.25) 0%,transparent 70%); }
-  .sfh-blob--2 { width:400px;height:300px;bottom:-80px;right:-80px;background:radial-gradient(circle,rgba(30,60,180,.35) 0%,transparent 70%); }
-  .sfh-inner { position:relative;z-index:1; }
-  .sfh-breadcrumbs { display:flex;align-items:center;gap:var(--sp-2);font-size:.8125rem;color:rgb(255 255 255/.45);margin-bottom:var(--sp-5);flex-wrap:wrap; }
-  .sfh-breadcrumbs a { color:rgb(255 255 255/.5);transition:color var(--t-fast); }
-  .sfh-breadcrumbs a:hover { color:var(--lime); }
-  .sfh-breadcrumbs span:last-child { color:var(--lime); }
-  .sfh-title { font-size:clamp(2rem,5vw,3rem);font-weight:900;color:#ffffff;letter-spacing:-0.035em;margin-bottom:var(--sp-5);line-height:1.12; }
-  .sfh-sub { font-size:1.0625rem;color:rgb(255 255 255/.65);max-width:600px;line-height:1.75;margin-bottom:var(--sp-8); }
-
-  /* ── Detail grid ───────────────────────────────────────── */
-  .sf-detail { display:grid;grid-template-columns:1fr;gap:var(--sp-12);align-items:center; }
-  @media (min-width:768px) { .sf-detail { grid-template-columns:1.2fr 1fr; } }
-
-  /* ── Browser frame (default) ──────────────────────────── */
-  .sfd-frame { border-radius:var(--r-2xl);overflow:hidden;border:1px solid var(--slate-200);box-shadow:var(--sh-xl);background:var(--white); }
-  .sfd-chrome { display:flex;align-items:center;padding:.5rem var(--sp-4);background:var(--slate-100);border-bottom:1px solid var(--slate-200); }
-  .sfd-dots { display:flex;gap:5px; }
-  .sfd-dots span { width:10px;height:10px;border-radius:50%;display:block; }
-  .sfd-body img { width:100%;height:auto;display:block; }
-
-  /* ── IBAN icon stage ───────────────────────────────────── */
-  .icon-visual {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 380px;
+  /* ── Hero ───────────────────────────────────────────────── */
+  .sf-hero {
+    background: var(--navy);
+    position: relative;
+    overflow: hidden;
+    padding: var(--sp-20) 0 var(--sp-16);
   }
+
+  .sfh-bg { position: absolute; inset: 0; pointer-events: none; }
+  .sfh-blob { position: absolute; border-radius: 50%; filter: blur(110px); }
+
+  .sfh-blob--1 {
+    width: 500px; height: 400px;
+    top: -150px; left: -100px;
+    background: radial-gradient(circle, rgba(168,168,60,.25) 0%, transparent 70%);
+  }
+
+  .sfh-blob--2 {
+    width: 400px; height: 300px;
+    bottom: -80px; right: -80px;
+    background: radial-gradient(circle, rgba(30,60,180,.35) 0%, transparent 70%);
+  }
+
+  .sfh-inner { position: relative; z-index: 1; }
+
+  .sfh-breadcrumbs {
+    display: flex; align-items: center; gap: var(--sp-2);
+    font-size: .8125rem; color: rgb(255 255 255 / .45);
+    margin-bottom: var(--sp-5); flex-wrap: wrap;
+  }
+
+  .sfh-breadcrumbs a { color: rgb(255 255 255 / .5); transition: color var(--t-fast); }
+  .sfh-breadcrumbs a:hover { color: var(--lime); }
+  .sfh-breadcrumbs span:last-child { color: var(--lime); }
+
+  .sfh-title {
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    font-weight: 900; color: #ffffff;
+    letter-spacing: -0.035em; margin-bottom: var(--sp-5); line-height: 1.1;
+  }
+
+  .sfh-sub {
+    font-size: 1.0625rem; color: rgb(255 255 255 / .65);
+    max-width: 600px; line-height: 1.75; margin-bottom: var(--sp-8);
+  }
+
+  .sfh-actions { display: flex; align-items: center; gap: var(--sp-5); flex-wrap: wrap; }
+  .sfh-back { font-size: .9375rem; color: rgb(255 255 255 / .5); transition: color var(--t-fast); }
+  .sfh-back:hover { color: var(--lime); }
+
+  /* ── Overview ────────────────────────────────────────────── */
+  .sf-overview { background: var(--white); }
+
+  .sf-overview-inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--sp-12);
+    align-items: center;
+  }
+
+  @media (min-width: 768px) {
+    .sf-overview-inner { grid-template-columns: 1.2fr 1fr; }
+  }
+
+  /* Browser frame */
+  .sfd-frame {
+    border-radius: var(--r-2xl); overflow: hidden;
+    border: 1px solid var(--slate-200); box-shadow: var(--sh-xl); background: var(--white);
+  }
+
+  .sfd-chrome {
+    display: flex; align-items: center;
+    padding: .5rem var(--sp-4);
+    background: var(--slate-100);
+    border-bottom: 1px solid var(--slate-200);
+  }
+
+  .sfd-dots { display: flex; gap: 5px; }
+  .sfd-dots span { width: 10px; height: 10px; border-radius: 50%; display: block; }
+  .sfd-body img { width: 100%; height: auto; display: block; }
+
+  /* Capabilities */
+  .sfd-caps-title {
+    font-size: 1.375rem; font-weight: 800;
+    color: var(--text-dark); letter-spacing: -0.03em; margin-bottom: var(--sp-6);
+  }
+
+  .sfd-caps {
+    display: grid; grid-template-columns: 1fr;
+    gap: var(--sp-3); margin-bottom: var(--sp-8);
+  }
+
+  @media (min-width: 480px) { .sfd-caps { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 768px) { .sfd-caps { grid-template-columns: 1fr; } }
+  @media (min-width: 1024px) { .sfd-caps { grid-template-columns: 1fr 1fr; } }
+
+  .sfd-cap {
+    display: flex; align-items: flex-start; gap: var(--sp-3);
+    font-size: .9375rem; color: var(--slate-700);
+    line-height: 1.45; font-weight: 500;
+  }
+
+  .sfd-cap__dot {
+    width: 20px; height: 20px; background: var(--lime);
+    border-radius: 50%; display: flex; align-items: center;
+    justify-content: center; flex-shrink: 0; margin-top: 2px;
+  }
+
+  .sfd-cap__dot svg { color: var(--navy); }
+
+  /* ── IBAN card stage ─────────────────────────────────────── */
+  .icon-visual { display: flex; justify-content: center; align-items: center; min-height: 380px; }
 
   .icon-stage {
-    position: relative;
-    width: 320px;
-    height: 320px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    position: relative; width: 320px; height: 320px;
+    display: flex; justify-content: center; align-items: center;
   }
 
-  /* Pulsing rings */
-  .ring {
-    position: absolute;
-    border-radius: 50%;
-    border: 1px solid rgba(0, 4, 53, 0.12);
-    animation: ringPulse 3.6s ease-out infinite;
-  }
+  .ring { position: absolute; border-radius: 50%; border: 1px solid rgba(0,4,53,.12); animation: ringPulse 3.6s ease-out infinite; }
   .ring--1 { width: 200px; height: 200px; animation-delay: 0s; }
   .ring--2 { width: 260px; height: 260px; animation-delay: 0.7s; }
   .ring--3 { width: 320px; height: 320px; animation-delay: 1.4s; }
@@ -178,22 +265,13 @@ const { feature, categorySlug, categoryTitle } = Astro.props;
     100% { transform: scale(1.05); opacity: 0; }
   }
 
-  /* Card */
   .iban-card {
-    position: relative;
-    width: 260px;
-    height: 160px;
+    position: relative; width: 260px; height: 160px;
     background: linear-gradient(135deg, var(--navy) 0%, #001080 60%, #000a4a 100%);
-    border-radius: 18px;
-    padding: 20px 22px 16px;
-    box-shadow:
-      0 24px 48px rgba(0,4,53,.35),
-      0 0 0 1px rgba(255,255,255,.1),
-      inset 0 1px 0 rgba(255,255,255,.08);
+    border-radius: 18px; padding: 20px 22px 16px;
+    box-shadow: 0 24px 48px rgba(0,4,53,.35), 0 0 0 1px rgba(255,255,255,.1), inset 0 1px 0 rgba(255,255,255,.08);
     animation: cardFloat 5s ease-in-out infinite;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    display: flex; flex-direction: column; justify-content: space-between;
   }
 
   @keyframes cardFloat {
@@ -201,11 +279,8 @@ const { feature, categorySlug, categoryTitle } = Astro.props;
     50%       { transform: translateY(-8px) rotate(0.5deg); }
   }
 
-  /* Shine sweep */
   .iban-card__shine {
-    position: absolute;
-    inset: 0;
-    border-radius: 18px;
+    position: absolute; inset: 0; border-radius: 18px;
     background: linear-gradient(105deg, transparent 30%, rgba(255,255,255,.07) 50%, transparent 70%);
     background-size: 200% 100%;
     animation: cardShine 3.5s ease-in-out infinite;
@@ -218,130 +293,44 @@ const { feature, categorySlug, categoryTitle } = Astro.props;
     100% { background-position: 200% 0; }
   }
 
-  .iban-card__top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-  }
+  .iban-card__top { display: flex; justify-content: space-between; align-items: flex-start; }
 
-  /* EMV chip */
   .iban-chip {
-    width: 32px;
-    height: 24px;
+    width: 32px; height: 24px;
     background: linear-gradient(135deg, #c9c97e, #E3E3A6);
-    border-radius: 5px;
-    position: relative;
-    overflow: hidden;
-  }
-  .iban-chip__h {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: rgba(0,4,53,.35);
-    transform: translateY(-50%);
-  }
-  .iban-chip__v {
-    position: absolute;
-    left: 50%;
-    top: 0;
-    bottom: 0;
-    width: 1px;
-    background: rgba(0,4,53,.35);
-    transform: translateX(-50%);
-  }
-  .iban-chip__c {
-    position: absolute;
-    inset: 5px;
-    border: 1px solid rgba(0,4,53,.2);
-    border-radius: 2px;
+    border-radius: 5px; position: relative; overflow: hidden;
   }
 
-  .iban-card__badge {
-    font-size: 9px;
-    font-weight: 800;
-    letter-spacing: .12em;
-    color: rgba(227,227,166,.6);
-    margin-top: 4px;
-  }
+  .iban-chip__h { position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: rgba(0,4,53,.35); transform: translateY(-50%); }
+  .iban-chip__v { position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: rgba(0,4,53,.35); transform: translateX(-50%); }
+  .iban-chip__c { position: absolute; inset: 5px; border: 1px solid rgba(0,4,53,.2); border-radius: 2px; }
+
+  .iban-card__badge { font-size: 9px; font-weight: 800; letter-spacing: .12em; color: rgba(227,227,166,.6); margin-top: 4px; }
 
   .iban-card__number {
-    display: flex;
-    gap: 10px;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: .12em;
-    color: rgba(255,255,255,.9);
+    display: flex; gap: 10px; font-size: 13px; font-weight: 700;
+    letter-spacing: .12em; color: rgba(255,255,255,.9);
     font-variant-numeric: tabular-nums;
   }
 
-  .iban-card__footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-  }
-
-  .iban-card__label {
-    font-size: 8px;
-    letter-spacing: .1em;
-    font-weight: 700;
-    color: rgba(255,255,255,.4);
-    text-transform: uppercase;
-  }
-
+  .iban-card__footer { display: flex; justify-content: space-between; align-items: flex-end; }
+  .iban-card__label { font-size: 8px; letter-spacing: .1em; font-weight: 700; color: rgba(255,255,255,.4); text-transform: uppercase; }
   .iban-card__logo { flex-shrink: 0; }
 
-  /* Floating data tags */
+  /* Floating tags */
   .float-tag {
-    position: absolute;
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    background: var(--white);
-    border: 1px solid var(--slate-200);
-    border-radius: var(--r-full);
-    padding: 5px 10px;
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--navy);
-    box-shadow: 0 4px 12px rgba(0,4,53,.1);
-    white-space: nowrap;
+    position: absolute; display: inline-flex; align-items: center; gap: 5px;
+    background: var(--white); border: 1px solid var(--slate-200);
+    border-radius: var(--r-full); padding: 5px 10px;
+    font-size: 11px; font-weight: 700; color: var(--navy);
+    box-shadow: 0 4px 12px rgba(0,4,53,.1); white-space: nowrap;
   }
 
-  .float-tag--1 {
-    top: 28px;
-    right: 10px;
-    animation: tagFloat1 4s ease-in-out infinite;
-  }
-  .float-tag--2 {
-    bottom: 48px;
-    left: 4px;
-    animation: tagFloat2 4.5s ease-in-out infinite;
-  }
-  .float-tag--3 {
-    bottom: 16px;
-    right: 14px;
-    animation: tagFloat3 5s ease-in-out infinite;
-  }
+  .float-tag--1 { top: 28px; right: 10px; animation: tagFloat1 4s ease-in-out infinite; }
+  .float-tag--2 { bottom: 48px; left: 4px; animation: tagFloat2 4.5s ease-in-out infinite; }
+  .float-tag--3 { bottom: 16px; right: 14px; animation: tagFloat3 5s ease-in-out infinite; }
 
-  @keyframes tagFloat1 {
-    0%, 100% { transform: translateY(0); }
-    50%       { transform: translateY(-6px); }
-  }
-  @keyframes tagFloat2 {
-    0%, 100% { transform: translateY(0); }
-    50%       { transform: translateY(-5px); }
-  }
-  @keyframes tagFloat3 {
-    0%, 100% { transform: translateY(0); }
-    50%       { transform: translateY(-7px); }
-  }
-
-  /* ── Capabilities & CTA ───────────────────────────────── */
-  .sfd-title { font-size:1.5rem;font-weight:800;color:var(--text-dark);letter-spacing:-0.03em;margin-bottom:var(--sp-6); }
-  .sfd-caps { display:flex;flex-direction:column;gap:var(--sp-4);margin-bottom:var(--sp-8); }
-  .sfd-cap { display:flex;align-items:flex-start;gap:var(--sp-3);font-size:1rem;color:var(--slate-700);line-height:1.5; }
-  .sfd-cap svg { color:var(--navy);background:var(--lime);border-radius:50%;padding:3px;width:24px;height:24px;flex-shrink:0;margin-top:1px; }
-  .sfd-cta-group { display:flex;flex-wrap:wrap;gap:var(--sp-3); }
+  @keyframes tagFloat1 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+  @keyframes tagFloat2 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+  @keyframes tagFloat3 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
 </style>
