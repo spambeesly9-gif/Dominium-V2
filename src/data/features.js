@@ -56,6 +56,7 @@ export const categories = [
           'Define roles: Admin, Block Manager, Employee',
           'Add and manage internal employee profiles',
           'Build a categorised supplier contact directory',
+          'Classify suppliers as full-time staff or part-time contractors',
           'Assign work orders to staff or external contractors',
           'Automatic email notification to supplier on assignment',
           '24-hour automated reminder before scheduled service',
@@ -72,7 +73,7 @@ export const categories = [
           },
           {
             heading: 'Comprehensive Supplier Directory',
-            body: 'Build and maintain a categorised supplier database covering all specialist services — plumbing, electrical, general maintenance, landscaping, and more. Having all supplier contacts organised within Dominium means the right contractor is always just a click away when a work request comes in. Supplier profiles include contact information, service categories, and a complete history of assigned jobs.',
+            body: 'Build and maintain a categorised supplier database covering all specialist services — plumbing, electrical, general maintenance, landscaping, and more. Suppliers are classified as full-time staff or part-time contractors, giving administrators a clear picture of their workforce composition at a glance. Having all contacts organised within Dominium means the right contractor is always just a click away when a work request comes in. Supplier profiles include contact information, service categories, and a complete history of assigned jobs.',
           },
           {
             heading: 'Automated Supplier Notifications',
@@ -136,6 +137,8 @@ export const categories = [
           'Automated overdue payment reminders via email and push',
           'Log income and expenditure against each condominium',
           'Upload receipts and maintain a complete financial ledger',
+          'Switch between Cash and Accrual accounting views in the Entries ledger',
+          'Track supplier bills separately with Pending Payment and Paid statuses',
         ],
         sections: [
           {
@@ -148,7 +151,7 @@ export const categories = [
           },
           {
             heading: 'Bank Entries and Expenses',
-            body: 'Administrators manage all financial transactions for each condominium directly within Dominium — opening and closing entries, categorising income and expenditure, and uploading supporting receipts. This creates an organised, transparent record of every financial movement within each building. Real-time transaction tracking with automated reconciliation ensures accounts remain accurate at all times.',
+            body: 'Administrators manage all financial transactions for each condominium directly within Dominium — categorising income and expenditure, and uploading supporting receipts against every entry. The Entries ledger supports both Cash and Accrual accounting views, giving administrators the flexibility to report in whichever method their accountant or regulatory requirements demand. A dedicated Bills module tracks all supplier invoices separately, with clear Pending Payment and Paid statuses so nothing falls through the cracks.',
           },
           {
             heading: 'Comprehensive Financial Oversight',
@@ -166,9 +169,10 @@ export const categories = [
         imageAlt: 'Dominium work requests management screen — Malta',
         capabilities: [
           'Online issue submission by residents from their portal',
+          'QR code generation for contactless issue reporting without login',
           'Instant admin and employee notifications on submission',
           'Assign jobs to internal employees or external suppliers',
-          'Track status: Open → In Progress → Closed',
+          'Track status: New → Requested → In Progress → Finished or Denied',
           'Real-time status updates pushed to residents',
           'Automated supplier reminders 24 hours before scheduled work',
           'Full audit trail of every work request and resolution',
@@ -179,8 +183,12 @@ export const categories = [
             body: 'Dominium provides residents with a straightforward platform to log maintenance requests or concerns seamlessly through their personal portal. Issues can range from maintenance needs to general inquiries — submitted directly through the system without phone calls, emails, or WhatsApp messages. Administrators and block managers receive instant notifications the moment a new report is submitted.',
           },
           {
+            heading: 'QR Code for Contactless Reporting',
+            body: 'Administrators generate a unique QR code for each building that can be printed and displayed in communal areas. Residents scan the code with their smartphone to submit a report instantly — without needing to open the portal or log in. This removes any friction from the reporting process and increases the volume of issues captured, helping management teams stay ahead of building maintenance proactively.',
+          },
+          {
             heading: 'Update Status for Client Visibility',
-            body: 'Dominium prioritises transparency between administrators and residents. Clients receive real-time updates at every stage of their reported issue — from initial acknowledgement, through supplier assignment, to final resolution. Residents can track progress directly from their portal at any time, eliminating the need to call or email for updates and reducing inbound communication significantly.',
+            body: 'Dominium prioritises transparency between administrators and residents. Every request moves through a clear, tracked lifecycle — New, Requested, In Progress, Finished, or Denied — with each status change triggering a real-time notification to the resident. If a request cannot be fulfilled, the Denied status ensures the resident is informed promptly with an explanation. Residents track progress directly from their portal without needing to call or email for updates.',
           },
           {
             heading: 'Assign to the Right Supplier Instantly',
@@ -194,6 +202,74 @@ export const categories = [
       },
 
       // 6 ──────────────────────────────────────────────────
+      {
+        slug: 'cleaning-and-inspection-reports',
+        title: 'Cleaning and Inspection Reports',
+        description: 'Schedule, log, and report on every cleaning visit and building inspection across your portfolio. Generate professional reports, track completion status, share findings with residents via the portal, and maintain a permanent compliance record for every managed property.',
+        image: '/Images/Cleaning and Inspection Reports Page.png',
+        imageAlt: 'Dominium cleaning and inspection reports screen — Malta condominium management',
+        capabilities: [
+          'Schedule recurring cleaning visits and building inspections',
+          'Log inspection findings with notes and photo evidence',
+          'Track completion status across all managed properties',
+          'Generate professional PDF inspection and cleaning reports',
+          'Share reports with residents directly through the portal',
+          'Configure report templates in Settings per property type',
+          'Maintain a permanent compliance record for every building',
+        ],
+        sections: [
+          {
+            heading: 'Scheduled Cleaning and Inspection Management',
+            body: 'Dominium provides a dedicated module for scheduling and tracking all cleaning visits and building inspections across your portfolio. Administrators log each visit, record findings, and attach photographic evidence — creating a structured, searchable record of every inspection completed. Cleaning schedules are configurable per property, ensuring nothing is missed across any of the buildings you manage.',
+          },
+          {
+            heading: 'Professional Report Generation',
+            body: 'Once an inspection or cleaning visit is recorded, Dominium generates a professional, formatted report ready for distribution. Reports can be shared directly with residents through the client portal, providing the transparency residents expect about how their building is being maintained. Having polished, consistent documentation also supports compliance requirements and insurance reviews.',
+          },
+          {
+            heading: 'Customisable Report Templates',
+            body: 'Administrators configure inspection and cleaning report templates within Settings to match the specific requirements of each property type — whether a residential block, a mixed-use development, or a commercial condominium. Custom templates ensure every report captures the right information consistently, reducing the time spent formatting documents and keeping reporting standards uniform across the portfolio.',
+          },
+          {
+            heading: 'Compliance and Audit Trail',
+            body: 'Every completed cleaning visit and inspection is stored permanently within the system — creating a verifiable audit trail that demonstrates ongoing maintenance obligations are being met. This documentation is invaluable for AGM reporting, insurance claims, and regulatory compliance. Administrators can retrieve historical inspection records for any property at any time, without relying on external filing systems or manual archives.',
+          },
+        ],
+      },
+
+      // 7 ──────────────────────────────────────────────────
+      {
+        slug: 'branding-and-white-label',
+        title: 'Branding and White-Label',
+        description: 'Present Dominium as your own platform. Upload your company logo, set your brand colours, and configure company details so that every invoice, report, and resident communication carries your management company\'s identity — not ours.',
+        image: '/Images/Settings_Branding Page.png',
+        imageAlt: 'Dominium white-label branding settings — Malta condominium management',
+        capabilities: [
+          'Upload your company logo for invoices and reports',
+          'Set custom brand colours across the platform',
+          'Configure company name, email, phone, and address',
+          'Branded invoices and contribution requests sent to residents',
+          'Consistent identity across all resident-facing documents',
+          'Update branding details at any time without technical support',
+          'Looks and feels like your own software to your residents',
+        ],
+        sections: [
+          {
+            heading: 'Your Brand, Your Platform',
+            body: 'Dominium is built for management companies that take their professional image seriously. Every invoice, contribution request, inspection report, and resident communication can carry your company\'s logo, colours, and contact details — not a generic software brand. This creates a polished, consistent experience for residents that reinforces trust in your management company from the very first interaction.',
+          },
+          {
+            heading: 'Easy Branding Setup',
+            body: 'Administrators configure all branding details from a single Settings page — uploading a logo, entering company contact information, and selecting brand colours without any technical support or developer involvement. Changes take effect immediately across the platform and all outgoing documents. Whether you manage one block or a hundred, your brand stays consistent throughout.',
+          },
+          {
+            heading: 'Branded Invoices and Reports',
+            body: 'Every document generated by Dominium — contribution invoices, expense reports, inspection summaries, and AGM documentation — is formatted with your company\'s identity. Residents see your management company\'s name and logo, not Dominium\'s. This professionalism differentiates your service, builds resident confidence, and reinforces your brand at every touchpoint in the management relationship.',
+          },
+        ],
+      },
+
+      // 8 ──────────────────────────────────────────────────
       {
         slug: 'client-notifications',
         title: 'Client Notifications',
@@ -251,9 +327,10 @@ export const categories = [
         imageAlt: 'Dominium report issue screen — Malta client portal',
         capabilities: [
           'One-click issue submission from the resident portal',
+          'QR code scanning for contactless reporting — no login required',
           'Photo and description upload per report',
           'Instant notifications to administrators and block managers',
-          'Real-time status updates visible to residents',
+          'Real-time status tracking: New → Requested → In Progress → Finished or Denied',
           'Supplier assignment tracked within the report',
           'Email notifications to all relevant parties at each stage',
           'Full resolution history per reported issue',
@@ -269,7 +346,7 @@ export const categories = [
           },
           {
             heading: 'Stay Updated on Your Issue',
-            body: 'Residents receive real-time updates on the progress and resolution of every report they submit — from initial acknowledgement through supplier assignment to final resolution. The system ensures all relevant parties receive immediate notifications at each stage. This approach guarantees concerns are addressed swiftly and residents feel genuinely heard throughout the process.',
+            body: 'Residents receive real-time notifications at every stage — from initial acknowledgement through supplier assignment to final resolution. The request lifecycle is fully visible: New, Requested, In Progress, Finished, or Denied. If a request cannot be actioned, the resident is notified immediately with an explanation — ensuring no submission is left without a response. This eliminates the frustration of submitting an issue and never hearing back.',
           },
           {
             heading: 'Transparent Resolution History',
