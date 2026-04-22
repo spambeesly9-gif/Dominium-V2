@@ -22,3 +22,9 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Playwright MCP session files
+.playwright-mcp/
+
+# Claude skills
+SKILL.md
