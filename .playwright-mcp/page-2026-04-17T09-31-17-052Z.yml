@@ -1,0 +1,78 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - link "Skip to content" [ref=e3] [cursor=pointer]:
+      - /url: "#primary"
+    - banner [ref=e4]:
+      - generic [ref=e12]:
+        - link "Dominium" [ref=e18] [cursor=pointer]:
+          - /url: https://condominiumsoftware.mt
+          - img "Dominium" [ref=e20]
+        - navigation [ref=e27]:
+          - list [ref=e29]:
+            - listitem [ref=e30]:
+              - link "Features" [ref=e31] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e32]:
+              - link "Pricing" [ref=e33] [cursor=pointer]:
+                - /url: https://condominiumsoftware.mt/pricing/
+            - listitem [ref=e34]:
+              - link "Contact" [ref=e35] [cursor=pointer]:
+                - /url: https://condominiumsoftware.mt/contact/
+            - listitem [ref=e36]:
+              - link "Insights" [ref=e37] [cursor=pointer]:
+                - /url: https://condominiumsoftware.mt/insights/
+            - listitem [ref=e38]:
+              - link "DOMINIUM Roadmap" [ref=e39] [cursor=pointer]:
+                - /url: https://condominiumsoftware.mt/dominium-roadmap/
+        - link "Get Started" [ref=e45] [cursor=pointer]:
+          - /url: /get-started
+          - generic [ref=e46]: Get Started
+    - heading "404" [level=1] [ref=e51]
+    - generic [ref=e54]:
+      - img "404 page" [ref=e56]
+      - generic [ref=e57]:
+        - heading "404 Error!" [level=4] [ref=e58]
+        - paragraph [ref=e59]: The page you are looking for is not available or doesn’t belong to this website!
+        - link "Go back to home" [ref=e60] [cursor=pointer]:
+          - /url: https://condominiumsoftware.mt
+  - contentinfo [ref=e61]:
+    - generic [ref=e66]:
+      - generic [ref=e68]:
+        - generic [ref=e70]:
+          - link "Dominium" [ref=e74] [cursor=pointer]:
+            - /url: https://condominiumsoftware.mt
+            - img "Dominium" [ref=e76]
+          - paragraph [ref=e82]: All-in-One Condominium Management System made specifically for condominium managers.
+        - generic [ref=e86]:
+          - heading "Useful Links" [level=6] [ref=e89]
+          - list [ref=e93]:
+            - listitem [ref=e94]:
+              - link "Home" [ref=e95] [cursor=pointer]:
+                - /url: https://condominiumsoftware.mt/
+                - generic [ref=e96]: Home
+            - listitem [ref=e97]:
+              - link "Pricing" [ref=e98] [cursor=pointer]:
+                - /url: https://condominiumsoftware.mt/pricing/
+                - generic [ref=e99]: Pricing
+            - listitem [ref=e100]:
+              - link "Contact" [ref=e101] [cursor=pointer]:
+                - /url: https://condominiumsoftware.mt/contact/
+                - generic [ref=e102]: Contact
+            - listitem [ref=e103]:
+              - link "Get Started" [ref=e104] [cursor=pointer]:
+                - /url: https://condominiumsoftware.mt/get-started/
+                - generic [ref=e105]: Get Started
+            - listitem [ref=e106]:
+              - link "Insights" [ref=e107] [cursor=pointer]:
+                - /url: https://condominiumsoftware.mt/insights/
+                - generic [ref=e108]: Insights
+            - listitem [ref=e109]:
+              - link "Privacy Policy" [ref=e110] [cursor=pointer]:
+                - /url: https://condominiumsoftware.mt/privacy-policy
+                - generic [ref=e111]: Privacy Policy
+      - paragraph [ref=e121]:
+        - text: © Copyright 2024, All Rights Reserved by
+        - link "Neural AI" [ref=e122] [cursor=pointer]:
+          - /url: https://neuralai.mt/
+  - iframe [ref=e125]:
+    

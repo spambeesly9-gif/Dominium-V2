@@ -1,0 +1,12 @@
+[    1533ms] [WARNING] Error: The domain CONDOMINIUMSOFTWARE.MT is not authorized to show the cookie banner for domain group ID cf09ac20-44bc-4417-8d8a-d8c1075c231f. Please add it to the domain group in the Cookiebot Manager to authorize the domain. @ https://consent.cookiebot.com/cf09ac20-44bc-4417-8d8a-d8c1075c231f/cc.js?renew=false&referer=condominiumsoftware.mt&dnt=false&init=false&culture=EN:0
+[    1545ms] [LOG] JQMIGRATE: Migrate is installed, version 3.4.1 @ https://condominiumsoftware.mt/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1:1
+[    2618ms] ReferenceError: Calendly is not defined
+    at window.onload (<anonymous>:1:30)
+    at window.onload (https://condominiumsoftware.mt/wp-content/plugins/elementor/assets/lib/waypoints/waypoints.min.js?ver=4.0.2:1:8753)
+    at window.CookieControl.Cookie.applyOverrideEventListeners (https://consent.cookiebot.com/uc.js:2:108581)
+    at https://consent.cookiebot.com/uc.js:2:17334
+[    2621ms] ReferenceError: Calendly is not defined
+    at window.onload (<anonymous>:1:30)
+    at window.onload (https://condominiumsoftware.mt/wp-content/plugins/elementor/assets/lib/waypoints/waypoints.min.js?ver=4.0.2:1:8753)
+    at window.CookieControl.Cookie.applyOverrideEventListeners (https://consent.cookiebot.com/uc.js:2:108786)
+    at https://consent.cookiebot.com/uc.js:2:17334

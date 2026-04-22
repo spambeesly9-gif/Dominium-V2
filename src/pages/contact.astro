@@ -224,27 +224,65 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
 
       <div class="screens-grid">
-        <div class="screen-card">
+        <div class="screen-card" data-lightbox="/Images/Home Page1.png" data-label="Admin Dashboard">
           <div class="screen-label">Admin Dashboard</div>
           <img src="/Images/Home Page1.png" alt="Dominium admin dashboard" loading="lazy" />
+          <div class="screen-expand-hint">Click to expand</div>
         </div>
-        <div class="screen-card">
+        <div class="screen-card" data-lightbox="/Images/Contributions Page.png" data-label="Contribution Management">
           <div class="screen-label">Contribution Management</div>
           <img src="/Images/Contributions Page.png" alt="Dominium contributions page" loading="lazy" />
+          <div class="screen-expand-hint">Click to expand</div>
         </div>
-        <div class="screen-card">
+        <div class="screen-card" data-lightbox="/Images/Maintenance Page1.png" data-label="Maintenance Requests">
           <div class="screen-label">Maintenance Requests</div>
           <img src="/Images/Maintenance Page1.png" alt="Dominium maintenance page" loading="lazy" />
+          <div class="screen-expand-hint">Click to expand</div>
         </div>
-        <div class="screen-card">
+        <div class="screen-card" data-lightbox="/Images/Report Issues Page.png" data-label="Client Portal — Issue Reporting">
           <div class="screen-label">Client Portal — Issue Reporting</div>
           <img src="/Images/Report Issues Page.png" alt="Dominium issue reporting" loading="lazy" />
+          <div class="screen-expand-hint">Click to expand</div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Lightbox -->
+  <div id="lb-overlay" role="dialog" aria-modal="true" aria-label="Screenshot preview">
+    <button id="lb-close" aria-label="Close">&times;</button>
+    <img id="lb-img" src="" alt="" />
+  </div>
+
 </BaseLayout>
+
+<script is:inline>
+  // ── Lightbox ──────────────────────────────────────────
+  (function () {
+    const overlay = document.getElementById('lb-overlay');
+    const img     = document.getElementById('lb-img');
+    const close   = document.getElementById('lb-close');
+
+    function open(src, label) {
+      img.src = src;
+      img.alt = label;
+      overlay.classList.add('lb-open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLb() {
+      overlay.classList.remove('lb-open');
+      document.body.style.overflow = '';
+      img.src = '';
+    }
+
+    document.querySelectorAll('.screen-card[data-lightbox]').forEach(card => {
+      card.addEventListener('click', () => open(card.dataset.lightbox, card.dataset.label));
+    });
+    close.addEventListener('click', closeLb);
+    overlay.addEventListener('click', (e) => { if (e.target === overlay) closeLb(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLb(); });
+  })();
+</script>
 
 <script is:inline>
   (function () {
@@ -624,6 +662,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     box-shadow: var(--sh-md);
     background: var(--white);
     transition: all var(--t-slow);
+    cursor: pointer;
+    position: relative;
   }
 
   .screen-card:hover {
@@ -644,12 +684,68 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   .screen-card img {
     width: 100%;
-    height: 200px;
-    object-fit: cover;
-    object-position: top;
+    height: auto;
     display: block;
     transition: transform var(--t-slow);
   }
 
-  .screen-card:hover img { transform: scale(1.03); }
+  .screen-card:hover img { transform: scale(1.02); }
+
+  .screen-expand-hint {
+    position: absolute;
+    bottom: var(--sp-3);
+    right: var(--sp-3);
+    background: rgba(0,0,0,0.55);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: var(--sp-1) var(--sp-2);
+    border-radius: var(--r-md);
+    opacity: 0;
+    transition: opacity var(--t-base);
+    pointer-events: none;
+  }
+  .screen-card:hover .screen-expand-hint { opacity: 1; }
+
+  /* ── Lightbox ──────────────────────────────────────── */
+  #lb-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.88);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+  }
+  #lb-overlay.lb-open { display: flex; }
+
+  #lb-img {
+    max-width: 95vw;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: var(--r-xl);
+    box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+  }
+
+  #lb-close {
+    position: absolute;
+    top: var(--sp-5);
+    right: var(--sp-5);
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background var(--t-fast);
+  }
+  #lb-close:hover { background: rgba(255,255,255,0.22); }
 </style>

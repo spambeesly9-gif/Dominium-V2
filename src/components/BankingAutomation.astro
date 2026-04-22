@@ -53,7 +53,7 @@
       <div class="banking-card">
         <div class="banking-card__icon">
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>
+            <path d="M15.5 5a7.5 7.5 0 1 0 0 14"/><line x1="3" y1="10" x2="12" y2="10"/><line x1="3" y1="14" x2="12" y2="14"/>
           </svg>
         </div>
         <div class="banking-card__tag">Zero Manual Entry</div>
@@ -109,12 +109,6 @@
         </ul>
       </div>
 
-    </div>
-
-    <!-- Bottom callout -->
-    <div class="banking-callout">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-      All banking automation is built into Dominium — no third-party setup, no developer configuration required.
     </div>
 
   </div>
@@ -240,29 +234,6 @@
 
   .banking-card__list li svg {
     color: var(--lime);
-    flex-shrink: 0;
-  }
-
-  /* ── Bottom callout ─────────────────────────────────── */
-  .banking-callout {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--sp-3);
-    margin-top: var(--sp-10);
-    padding: var(--sp-4) var(--sp-6);
-    background: var(--bg-light);
-    border: 1px solid var(--slate-200);
-    border-radius: var(--r-full);
-    font-size: 0.875rem;
-    color: var(--slate-500);
-    width: fit-content;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .banking-callout svg {
-    color: var(--navy);
     flex-shrink: 0;
   }
 </style>

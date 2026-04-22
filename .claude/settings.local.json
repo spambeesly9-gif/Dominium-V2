@@ -8,7 +8,11 @@
       "Bash(curl -s http://localhost:4321/insights)",
       "WebFetch(domain:raw.githubusercontent.com)",
       "Bash(git -C \"/Users/kanishkkarande/Desktop/Dominium V2/cd Dominium V2npm run dev\" init)",
-      "Bash(git -C \"/Users/kanishkkarande/Desktop/Dominium V2/cd Dominium V2npm run dev\" remote add origin https://github.com/kanishkkarande/Dominium-V2.git)"
+      "Bash(git -C \"/Users/kanishkkarande/Desktop/Dominium V2/cd Dominium V2npm run dev\" remote add origin https://github.com/kanishkkarande/Dominium-V2.git)",
+      "Bash(claude plugin *)",
+      "mcp__plugin_playwright_playwright__browser_navigate",
+      "mcp__plugin_playwright_playwright__browser_click",
+      "mcp__plugin_playwright_playwright__browser_snapshot"
     ]
   }
 }

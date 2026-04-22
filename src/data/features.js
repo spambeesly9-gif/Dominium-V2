@@ -521,7 +521,7 @@ export const categories = [
         image: '/Images/Settings_Integration Xero Page.png',
         imageAlt: 'Dominium Xero QuickBooks Zoho Books accounting integration — Malta',
         capabilities: [
-          'Two-way sync with Xero, QuickBooks Online, or Zoho Books',
+          'One-way sync with Xero, QuickBooks Online, or Zoho Books',
           'Automatic payment and contribution reconciliation',
           'Contribution invoices pushed directly to your accounting platform',
           'Expense and bill categorisation per block',
