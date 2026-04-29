@@ -35,72 +35,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <p class="form-sub">Fill in your details and we'll get back to you within one business day to confirm a time.</p>
         </div>
 
-        <form
-          class="contact-form"
-          name="demo-request"
-          method="POST"
-          data-netlify="true"
-          netlify-honeypot="bot-field"
-          action="/thank-you"
-        >
-          <!-- Honeypot for spam -->
-          <input type="hidden" name="form-name" value="demo-request" />
-          <p style="display:none;"><label>Don't fill this out: <input name="bot-field" /></label></p>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="first-name" class="form-label">First name <span class="required" aria-hidden="true">*</span></label>
-              <input type="text" id="first-name" name="first-name" class="form-input" placeholder="Charles" required aria-required="true" autocomplete="given-name" />
-            </div>
-            <div class="form-group">
-              <label for="last-name" class="form-label">Last name <span class="required" aria-hidden="true">*</span></label>
-              <input type="text" id="last-name" name="last-name" class="form-input" placeholder="Borg" required aria-required="true" autocomplete="family-name" />
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="email" class="form-label">Email address <span class="required" aria-hidden="true">*</span></label>
-            <input type="email" id="email" name="email" class="form-input" placeholder="charles@example.com" required aria-required="true" autocomplete="email" />
-          </div>
-
-          <div class="form-group">
-            <label for="phone" class="form-label">Phone number</label>
-            <input type="tel" id="phone" name="phone" class="form-input" placeholder="+356 XXXX XXXX" autocomplete="tel" />
-          </div>
-
-          <div class="form-group">
-            <label for="company" class="form-label">Company / Organisation</label>
-            <input type="text" id="company" name="company" class="form-input" placeholder="Your property management company" autocomplete="organization" />
-          </div>
-
-          <div class="form-group">
-            <label for="units" class="form-label">Approximate number of units you manage</label>
-            <select id="units" name="units" class="form-select">
-              <option value="" disabled selected>Select a range</option>
-              <option value="1-50">1 – 50 units</option>
-              <option value="51-150">51 – 150 units</option>
-              <option value="151-300">151 – 300 units</option>
-              <option value="301-800">301 – 800 units</option>
-              <option value="801-2000">801 – 2,000 units</option>
-              <option value="2000+">2,000+ units</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="message" class="form-label">Anything you'd like us to know?</label>
-            <textarea id="message" name="message" class="form-textarea" rows="4" placeholder="Tell us about your current setup, challenges, or anything specific you'd like to see in the demo..."></textarea>
-          </div>
-
-          <button type="submit" class="form-submit">
-            Request Demo
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </button>
-
-          <p class="form-note">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            We respect your privacy. Your data is handled in accordance with GDPR.
-          </p>
-        </form>
+        <div class="zoho-form-wrap">
+          <iframe
+            id="ziframe_174953"
+            aria-label="Contact Us"
+            frameborder="0"
+            style="height:500px;width:99%;border:none;"
+            src="https://forms.zohopublic.eu/spambeesly9gm1/form/ContactUs/formperma/2O6BWlIvcFlJI4hkp3oGRn8ZIj-AMwexJZiVvTOW4UY"
+          ></iframe>
+        </div>
       </div>
 
       <!-- Info panel -->
@@ -168,7 +111,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               </div>
               <div>
                 <div class="contact-detail__label">Address</div>
-                <div class="contact-detail__value">Triq G. Abela, Ħaż-Żebbuġ, Malta</div>
+                <div class="contact-detail__value">Neural AI Ltd, Block LS3, Malta Life Sciences Park, San Gwann SGN 3000</div>
               </div>
             </div>
             <div class="contact-detail">
@@ -187,7 +130,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="info-card map-card">
           <h3 class="info-card__title">Find Us</h3>
           <div id="contact-map" class="contact-map"></div>
-          <p class="map-address">Triq G. Abela, Ħaż-Żebbuġ, Malta</p>
+          <p class="map-address">Neural AI Ltd, Block LS3, Malta Life Sciences Park, San Gwann SGN 3000</p>
         </div>
 
         <!-- Trust signals -->
@@ -257,6 +200,32 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 </BaseLayout>
 
 <script is:inline>
+  (function() {
+    try {
+      var zf_frame = document.getElementById("ziframe_174953");
+      var ifrmSrc = zf_frame.src;
+      if (!((new RegExp("[?&]referrername=")).test(ifrmSrc))) {
+        var rfr = window.location.href;
+        try {
+          rfr = window.self !== window.top ?
+            window.top.location.href :
+            (/^https?:\/\/[\w.-]+\.[a-zA-Z]{2,}/i.test(rfr) ? rfr : "");
+        } catch (e) {}
+        if (rfr && rfr !== "") {
+          if (rfr.length > 1800) {
+            var queryIndex = rfr.indexOf('?');
+            if (queryIndex > -1) rfr = rfr.substring(0, queryIndex);
+            if (rfr.length > 1800) rfr = rfr.substring(0, 1800);
+          }
+          ifrmSrc += ((ifrmSrc.indexOf('?') > 0) ? '&' : '?') + 'referrername=' + encodeURIComponent(rfr);
+        }
+      }
+      if (zf_frame.src !== ifrmSrc) zf_frame.src = ifrmSrc;
+    } catch (e) {}
+  })();
+</script>
+
+<script is:inline>
   // ── Lightbox ──────────────────────────────────────────
   (function () {
     const overlay = document.getElementById('lb-overlay');
@@ -297,14 +266,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
     script.onload = function () {
       const L = window.L;
-      const map = L.map('contact-map', { scrollWheelZoom: false }).setView([35.8755, 14.4407], 15);
+      const map = L.map('contact-map', { scrollWheelZoom: false }).setView([35.9038, 14.4732], 15);
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
         maxZoom: 19,
       }).addTo(map);
-      L.marker([35.8755, 14.4407])
+      L.marker([35.9038, 14.4732])
         .addTo(map)
-        .bindPopup('<b>Dominium</b><br>Triq G. Abela, Ħaż-Żebbuġ, Malta')
+        .bindPopup('<b>Neural AI Ltd</b><br>Block LS3, Malta Life Sciences Park<br>San Gwann SGN 3000')
         .openPopup();
     };
     document.head.appendChild(script);
@@ -373,7 +342,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
 
   /* ── Form ────────────────────────────────────────────── */
-  .form-header { margin-bottom: var(--sp-8); }
+  .form-header { margin-bottom: var(--sp-6); }
 
   .form-title {
     font-size: clamp(1.5rem, 3vw, 2rem);
@@ -389,106 +358,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     line-height: 1.65;
   }
 
-  .contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: var(--sp-5);
+  .zoho-form-wrap {
     background: var(--white);
     border: 1px solid var(--slate-200);
     border-radius: var(--r-2xl);
-    padding: var(--sp-8);
+    padding: var(--sp-4);
     box-shadow: var(--sh-lg);
-  }
-
-  .form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--sp-4);
-  }
-
-  @media (max-width: 480px) {
-    .form-row { grid-template-columns: 1fr; }
-  }
-
-  .form-group { display: flex; flex-direction: column; gap: var(--sp-2); }
-
-  .form-label {
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: var(--slate-700);
-  }
-
-  .required { color: #EF4444; }
-
-  .form-input,
-  .form-select,
-  .form-textarea {
-    font-family: var(--font);
-    font-size: 1rem;
-    color: var(--text-dark);
-    background: var(--white);
-    border: 1.5px solid var(--slate-300);
-    border-radius: var(--r-lg);
-    padding: 0.75rem 1rem;
-    width: 100%;
-    transition: border-color var(--t-fast), box-shadow var(--t-fast);
-    outline: none;
-    appearance: none;
-  }
-
-  .form-input:focus,
-  .form-select:focus,
-  .form-textarea:focus {
-    border-color: var(--navy);
-    box-shadow: 0 0 0 3px var(--navy-50);
-  }
-
-  .form-input::placeholder,
-  .form-textarea::placeholder { color: var(--slate-400); }
-
-  .form-select {
-    background-image: url("data:image/svg+xml,%3Csvg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%2364748B' stroke-width='2.5' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 1rem center;
-    padding-right: 2.5rem;
-    cursor: pointer;
-  }
-
-  .form-textarea { resize: vertical; min-height: 100px; }
-
-  .form-submit {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--sp-2);
-    padding: 1rem var(--sp-6);
-    background: var(--navy);
-    color: var(--white);
-    border: none;
-    border-radius: var(--r-lg);
-    font-size: 1.0625rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all var(--t-base);
-    font-family: var(--font);
-    width: 100%;
-    margin-top: var(--sp-2);
-  }
-
-  .form-submit:hover {
-    background: var(--navy-700);
-    transform: translateY(-1px);
-    box-shadow: 0 8px 20px -4px rgb(0 4 53 / .4);
-  }
-
-  .form-note {
-    display: flex;
-    align-items: center;
-    gap: var(--sp-2);
-    font-size: 0.8125rem;
-    color: var(--slate-400);
-    text-align: center;
-    justify-content: center;
+    overflow: hidden;
   }
 
   /* ── Info panel ──────────────────────────────────────── */

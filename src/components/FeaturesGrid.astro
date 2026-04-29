@@ -123,26 +123,43 @@ const clientFeatures = [
       ))}
     </div>
 
-    <!-- Accounting integrations callout -->
+    <!-- Integrations callout -->
     <div class="integrations-callout">
       <div class="int-callout-left">
-        <div class="badge" style="margin-bottom: var(--sp-4);">Accounting Integrations</div>
-        <h3 class="int-callout-title">Sync with Your Accounting Software</h3>
+        <div class="badge" style="margin-bottom: var(--sp-4);">Integrations</div>
+        <h3 class="int-callout-title">Sync with Your Accounting &amp; Banking Software</h3>
         <p class="int-callout-desc">
-          Dominium connects directly with leading accounting platforms — eliminating double-entry and keeping your books accurate automatically.
+          Dominium connects directly with leading accounting and banking platforms — eliminating double-entry and keeping your books accurate automatically.
         </p>
-        <div class="int-logos">
-          <div class="int-logo-item">
-            <img src="/Xero%20logo.webp" alt="Xero" class="int-logo-img" />
+
+        <div class="int-logo-groups">
+          <!-- Accounting -->
+          <div class="int-logo-group">
+            <span class="int-logo-group-label">Accounting</span>
+            <div class="int-logos">
+              <div class="int-logo-item">
+                <img src="/Xero%20logo.webp" alt="Xero" class="int-logo-img" />
+              </div>
+              <div class="int-logo-item">
+                <img src="/Quickbooks%20logo.png" alt="QuickBooks" class="int-logo-img" />
+              </div>
+              <div class="int-logo-item">
+                <img src="/Zoho%20logo.webp" alt="Zoho Books" class="int-logo-img" />
+              </div>
+            </div>
           </div>
-          <div class="int-logo-item">
-            <img src="/Quickbooks%20logo.png" alt="QuickBooks" class="int-logo-img" />
-          </div>
-          <div class="int-logo-item">
-            <img src="/Zoho%20logo.webp" alt="Zoho Books" class="int-logo-img" />
-          </div>
-          <div class="int-logo-item">
-            <img src="/Fyorin%20logo.webp" alt="Fyorin" class="int-logo-img" />
+
+          <!-- Banking -->
+          <div class="int-logo-group">
+            <span class="int-logo-group-label">Banking</span>
+            <div class="int-logos">
+              <div class="int-logo-item">
+                <img src="/Fyorin%20logo.webp" alt="Fyorin" class="int-logo-img" />
+              </div>
+              <div class="int-logo-item">
+                <img src="/Revolut%20logo.webp" alt="Revolut" class="int-logo-img" />
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -345,6 +362,26 @@ const clientFeatures = [
     color: rgb(255 255 255 / .7);
     line-height: 1.7;
     margin-bottom: var(--sp-6);
+  }
+
+  .int-logo-groups {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-5);
+  }
+
+  .int-logo-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-2);
+  }
+
+  .int-logo-group-label {
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgb(255 255 255 / .45);
   }
 
   .int-logos {

@@ -64,14 +64,27 @@
   <div class="integ-strip">
     <div class="container integ-strip-inner">
       <span class="integ-label">Integrates with</span>
-      <div class="integ-logos">
-        <img src="/Xero%20logo.webp" alt="Xero" class="integ-logo" />
-        <div class="integ-sep" aria-hidden="true"></div>
-        <img src="/Quickbooks%20logo.png" alt="QuickBooks" class="integ-logo" />
-        <div class="integ-sep" aria-hidden="true"></div>
-        <img src="/Zoho%20logo.webp" alt="Zoho Books" class="integ-logo" />
-        <div class="integ-sep" aria-hidden="true"></div>
-        <img src="/Fyorin%20logo.webp" alt="Fyorin" class="integ-logo" />
+
+      <div class="integ-group">
+        <span class="integ-group-label">Accounting</span>
+        <div class="integ-logos">
+          <img src="/Xero%20logo.webp" alt="Xero" class="integ-logo" />
+          <div class="integ-sep" aria-hidden="true"></div>
+          <img src="/Quickbooks%20logo.png" alt="QuickBooks" class="integ-logo" />
+          <div class="integ-sep" aria-hidden="true"></div>
+          <img src="/Zoho%20logo.webp" alt="Zoho Books" class="integ-logo" />
+        </div>
+      </div>
+
+      <div class="integ-divider" aria-hidden="true"></div>
+
+      <div class="integ-group">
+        <span class="integ-group-label">Banking</span>
+        <div class="integ-logos">
+          <img src="/Fyorin%20logo.webp" alt="Fyorin" class="integ-logo" />
+          <div class="integ-sep" aria-hidden="true"></div>
+          <img src="/Revolut%20logo.webp" alt="Revolut" class="integ-logo" />
+        </div>
       </div>
     </div>
   </div>
@@ -215,14 +228,14 @@
   .integ-strip {
     border-top: 1px solid var(--slate-100);
     background: var(--bg-light);
-    padding: var(--sp-4) 0;
+    padding: var(--sp-5) 0;
   }
 
   .integ-strip-inner {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: var(--sp-4) var(--sp-6);
+    gap: var(--sp-5) var(--sp-8);
   }
 
   .integ-label {
@@ -233,24 +246,46 @@
     flex-shrink: 0;
   }
 
+  .integ-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-2);
+  }
+
+  .integ-group-label {
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--slate-400);
+  }
+
   .integ-logos {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: var(--sp-3);
+    gap: var(--sp-4);
   }
 
   .integ-logo {
-    height: 22px;
+    height: 28px;
     width: auto;
     display: block;
   }
 
   .integ-sep {
     width: 1px;
-    height: 1rem;
+    height: 1.25rem;
     background: var(--slate-200);
     flex-shrink: 0;
+  }
+
+  .integ-divider {
+    width: 1px;
+    height: 3rem;
+    background: var(--slate-200);
+    flex-shrink: 0;
+    align-self: center;
   }
 
   /* ── Hero entrance animations ───────────────────────── */
