@@ -10,7 +10,6 @@
     </div>
 
     <div class="preview-wrap">
-      <!-- Browser frame with dashboard screenshot -->
       <div class="preview-browser">
         <div class="preview-chrome">
           <div class="preview-dots" aria-hidden="true">
@@ -19,17 +18,68 @@
             <span style="background:#27C93F"></span>
           </div>
         </div>
-        <div class="preview-body">
-          <img
-            src="/Images/Home%20Page1.png"
-            alt="Dominium admin dashboard overview"
-            loading="lazy"
-            decoding="async"
-          />
-        </div>
+
+        <!-- Custom video player -->
+        <div class="vp" id="vp">
+
+          <!-- The video — pointer-events:none so overlay intercepts all clicks -->
+          <video
+            id="vp-video"
+            src="/Demo/Demo.mp4"
+            preload="none"
+            playsinline
+            disablepictureinpicture
+            disableRemotePlayback
+            x-webkit-airplay="deny"
+            controlslist="nodownload nofullscreen noremoteplayback"
+          ></video>
+
+          <!-- Cover image shown before first play -->
+          <div class="vp-cover" id="vp-cover" aria-hidden="true">
+            <div class="vp-cover-play">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+
+          <!-- Full-area click target that also shows the hover play icon -->
+          <div class="vp-click" id="vp-click" aria-label="Play video" role="button" tabindex="0">
+            <div class="vp-play-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+
+          <!-- Controls bar — absolutely positioned inside .vp -->
+          <div class="vp-bar" id="vp-bar" role="toolbar" aria-label="Video controls">
+
+            <button class="vp-btn" id="vp-pp" aria-label="Play" type="button">
+              <svg class="ic ic-play"  viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              <svg class="ic ic-pause" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+            </button>
+
+            <div class="vp-scrub" id="vp-scrub" role="slider" tabindex="0" aria-label="Seek" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <div class="vp-track">
+                <div class="vp-fill" id="vp-fill"></div>
+                <div class="vp-knob" id="vp-knob"></div>
+              </div>
+            </div>
+
+            <span class="vp-time" id="vp-time">0:00 / 0:00</span>
+
+            <button class="vp-btn" id="vp-mute" aria-label="Mute" type="button">
+              <svg class="ic ic-vol"  viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+              <svg class="ic ic-mute" viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+            </button>
+
+            <button class="vp-btn vp-btn-right" id="vp-fs" aria-label="Fullscreen" type="button">
+              <svg class="ic ic-expand"   viewBox="0 0 24 24" fill="currentColor"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+              <svg class="ic ic-compress" viewBox="0 0 24 24" fill="currentColor"><path d="M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-11V5h-2v5h5V8h-3z"/></svg>
+            </button>
+
+          </div><!-- /.vp-bar -->
+        </div><!-- /.vp -->
       </div>
 
-      <!-- Feature pills overlay -->
+      <!-- Feature pills -->
       <div class="preview-pills">
         <div class="preview-pill preview-pill--1">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
@@ -52,7 +102,140 @@
   </div>
 </section>
 
+<script is:inline>
+(function () {
+  var vp     = document.getElementById('vp');
+  var video  = document.getElementById('vp-video');
+  var cover  = document.getElementById('vp-cover');
+  var click  = document.getElementById('vp-click');
+  var bar    = document.getElementById('vp-bar');
+  var ppBtn  = document.getElementById('vp-pp');
+  var scrub  = document.getElementById('vp-scrub');
+  var fill   = document.getElementById('vp-fill');
+  var knob   = document.getElementById('vp-knob');
+  var timeEl = document.getElementById('vp-time');
+  var muteB  = document.getElementById('vp-mute');
+  var fsBtn  = document.getElementById('vp-fs');
+
+  if (!video) return;
+
+  var hasPlayed = false;
+  var hideT;
+
+  function fmt(s) {
+    s = isNaN(s) || !isFinite(s) ? 0 : s;
+    return Math.floor(s / 60) + ':' + ('0' + Math.floor(s % 60)).slice(-2);
+  }
+
+  function syncBar() {
+    if (!video.duration) return;
+    var p = video.currentTime / video.duration * 100;
+    fill.style.width = p + '%';
+    knob.style.left  = p + '%';
+    scrub.setAttribute('aria-valuenow', Math.round(p));
+    timeEl.textContent = fmt(video.currentTime) + ' / ' + fmt(video.duration);
+  }
+
+  /* ── Show / hide controls bar ───────────────────────── */
+  function showBar() {
+    bar.classList.add('bar-on');
+    clearTimeout(hideT);
+    if (!video.paused) {
+      hideT = setTimeout(function () { bar.classList.remove('bar-on'); }, 2400);
+    }
+  }
+  function hideBar() {
+    clearTimeout(hideT);
+    if (!video.paused) bar.classList.remove('bar-on');
+  }
+
+  /* ── Play state class ───────────────────────────────── */
+  video.addEventListener('play', function () {
+    hasPlayed = true;
+    vp.classList.add('playing');
+    vp.classList.add('played');
+    ppBtn.setAttribute('aria-label', 'Pause');
+    showBar();
+  });
+
+  video.addEventListener('pause', function () {
+    vp.classList.remove('playing');
+    ppBtn.setAttribute('aria-label', 'Play');
+    /* show bar when paused mid-video so user can resume */
+    if (hasPlayed) bar.classList.add('bar-on');
+  });
+  video.addEventListener('ended', function () {
+    vp.classList.remove('playing');
+    hasPlayed = false;
+    video.currentTime = 0;
+    bar.classList.remove('bar-on');
+    syncBar();
+  });
+  video.addEventListener('timeupdate',     syncBar);
+  video.addEventListener('loadedmetadata', syncBar);
+
+  /* ── Click / keyboard to play ───────────────────────── */
+  function togglePlay() {
+    video.paused ? video.play() : video.pause();
+  }
+  if (cover) cover.addEventListener('click', togglePlay);
+  click.addEventListener('click', togglePlay);
+  click.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); togglePlay(); }
+  });
+  ppBtn.addEventListener('click', function (e) { e.stopPropagation(); togglePlay(); });
+
+  /* ── Hover: show/hide bar ────────────────────────────── */
+  vp.addEventListener('mouseenter', function () { if (hasPlayed) showBar(); });
+  vp.addEventListener('mousemove',  function () { if (hasPlayed) showBar(); });
+  vp.addEventListener('mouseleave', hideBar);
+
+  /* ── Seek ────────────────────────────────────────────── */
+  var dragging = false;
+  function seekAt(clientX) {
+    var r   = scrub.getBoundingClientRect();
+    var pct = Math.max(0, Math.min(1, (clientX - r.left) / r.width));
+    if (video.duration) video.currentTime = pct * video.duration;
+  }
+  scrub.addEventListener('mousedown', function (e) {
+    dragging = true; seekAt(e.clientX); e.preventDefault(); e.stopPropagation();
+  });
+  document.addEventListener('mousemove', function (e) { if (dragging) seekAt(e.clientX); });
+  document.addEventListener('mouseup',   function ()  { dragging = false; });
+  scrub.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight') video.currentTime = Math.min(video.duration || 0, video.currentTime + 5);
+    if (e.key === 'ArrowLeft')  video.currentTime = Math.max(0, video.currentTime - 5);
+  });
+
+  /* ── Mute ────────────────────────────────────────────── */
+  muteB.addEventListener('click', function (e) {
+    e.stopPropagation();
+    video.muted = !video.muted;
+    vp.classList.toggle('muted', video.muted);
+    muteB.setAttribute('aria-label', video.muted ? 'Unmute' : 'Mute');
+  });
+
+  /* ── Fullscreen ──────────────────────────────────────── */
+  fsBtn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+      (vp.requestFullscreen || vp.webkitRequestFullscreen).call(vp);
+    } else {
+      (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+    }
+  });
+  function onFsChange() {
+    var full = !!(document.fullscreenElement || document.webkitFullscreenElement);
+    vp.classList.toggle('fullscreen', full);
+    fsBtn.setAttribute('aria-label', full ? 'Exit fullscreen' : 'Fullscreen');
+  }
+  document.addEventListener('fullscreenchange',       onFsChange);
+  document.addEventListener('webkitfullscreenchange', onFsChange);
+})();
+</script>
+
 <style>
+  /* ── Section ─────────────────────────────────────────── */
   .platform-preview {
     background: var(--bg-light);
     border-top: 1px solid var(--slate-200);
@@ -60,9 +243,14 @@
     padding: var(--sp-20) 0;
   }
 
-  /* ── Browser frame ───────────────────────────────────── */
-  .preview-wrap { position: relative; }
+  .preview-wrap {
+    position: relative;
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
 
+  /* ── Browser frame ───────────────────────────────────── */
   .preview-browser {
     border-radius: var(--r-2xl);
     overflow: hidden;
@@ -71,14 +259,16 @@
       0 2px 4px rgb(0 0 0 / .04),
       0 8px 32px rgb(0 0 0 / .08),
       0 32px 64px rgb(0 0 0 / .08);
-    background: var(--white);
+    background: #000;
     transition: transform 0.4s ease, box-shadow 0.4s ease;
+    /* isolate stacking so absolute children can't escape */
+    isolation: isolate;
   }
 
   .preview-browser:hover {
     transform: translateY(-4px);
     box-shadow:
-      0 2px 4px rgb(0 0 0 / .04),
+      0 4px 8px rgb(0 0 0 / .06),
       0 12px 40px rgb(0 0 0 / .12),
       0 40px 80px rgb(0 0 0 / .1);
   }
@@ -86,36 +276,272 @@
   .preview-chrome {
     display: flex;
     align-items: center;
-    gap: var(--sp-3);
-    padding: 0.625rem var(--sp-4);
+    padding: 0.625rem 1rem;
     background: var(--slate-100);
     border-bottom: 1px solid var(--slate-200);
+    position: relative;
+    z-index: 2;
   }
 
-  .preview-dots {
-    display: flex;
-    gap: 6px;
-    flex-shrink: 0;
-  }
+  .preview-dots { display: flex; gap: 6px; }
+  .preview-dots span { width: 11px; height: 11px; border-radius: 50%; display: block; }
 
-  .preview-dots span {
-    width: 11px;
-    height: 11px;
-    border-radius: 50%;
+  /* ── Video player ─────────────────────────────────────── */
+  .vp {
+    position: relative;
+    width: 100%;
+    background: #000;
+    /* clip everything: overlays, bar, native controls */
+    overflow: hidden;
     display: block;
-  }
-
-  .preview-body {
     line-height: 0;
   }
 
-  .preview-body img {
+  /* Suppress ALL browser-native video UI */
+  .vp video {
     width: 100%;
     height: auto;
     display: block;
+    aspect-ratio: 16 / 10;        /* matches 1440×900 recording; holds space before load */
+    pointer-events: none;         /* our overlay handles all interactions */
+    -webkit-mask-image: none;
+  }
+  .vp video::-webkit-media-controls                            { display: none !important; }
+  .vp video::-webkit-media-controls-enclosure                  { display: none !important; }
+  .vp video::-webkit-media-controls-panel                      { display: none !important; }
+  .vp video::-webkit-media-controls-overlay-play-button        { display: none !important; }
+  .vp video::-webkit-media-controls-play-button                { display: none !important; }
+  .vp video::-webkit-media-controls-cast-button                { display: none !important; }
+  .vp video::-webkit-media-controls-picture-in-picture-button  { display: none !important; }
+  .vp video::-webkit-media-controls-timeline                   { display: none !important; }
+  .vp video::-webkit-media-controls-current-time-display       { display: none !important; }
+
+  /* ── Cover image (shown before first play) ───────────── */
+  .vp-cover {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    background:
+      linear-gradient(to bottom, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.52) 100%),
+      url('/Demo/Demo%20cover.png') center center / cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: opacity 0.35s ease;
   }
 
-  /* ── Feature pills ───────────────────────────────────── */
+  /* Dismiss cover when playing starts */
+  .vp.playing .vp-cover,
+  .vp.played  .vp-cover {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .vp-cover-play {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.18s ease, opacity 0.18s ease;
+    opacity: 0.75;
+  }
+  .vp-cover:hover .vp-cover-play {
+    transform: scale(1.12);
+    opacity: 1;
+  }
+  .vp-cover-play svg {
+    width: 64px;
+    height: 64px;
+    color: rgba(255,255,255,0.88);
+    filter: drop-shadow(0 4px 16px rgba(0,0,0,0.45));
+  }
+
+  /* ── Click overlay (centre play icon on hover) ────────── */
+  .vp-click {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background: transparent;
+    transition: background 0.2s ease;
+    z-index: 1;
+  }
+
+  /* Dim the video slightly on hover (not playing) */
+  .vp:not(.playing) .vp-click:hover {
+    background: rgba(0, 0, 0, 0.30);
+  }
+
+  /* Hide the click overlay when playing (let video be visible) */
+  .vp.playing .vp-click {
+    pointer-events: none;
+    background: transparent;
+  }
+
+  /* Centre play icon */
+  .vp-play-icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.92);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: scale(0.82);
+    transition: opacity 0.18s ease, transform 0.18s ease;
+    box-shadow: 0 6px 28px rgba(0, 0, 0, 0.35);
+    pointer-events: none;
+    flex-shrink: 0;
+  }
+
+  /* Show on hover (only when not playing) */
+  .vp:not(.playing) .vp-click:hover .vp-play-icon {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .vp-play-icon svg {
+    width: 30px;
+    height: 30px;
+    color: var(--navy, #000428);
+    margin-left: 4px;
+  }
+
+  /* ── Controls bar ─────────────────────────────────────── */
+  .vp-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 28px 12px 10px;
+    background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, transparent 100%);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .vp-bar.bar-on {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* ── Control buttons ──────────────────────────────────── */
+  .vp-btn {
+    flex-shrink: 0;
+    background: none;
+    border: none;
+    padding: 5px;
+    margin: 0;
+    cursor: pointer;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    transition: background 0.15s;
+    line-height: 0;
+    outline: none;
+  }
+  .vp-btn:hover { background: rgba(255,255,255,0.18); }
+  .vp-btn-right { margin-left: auto; }
+
+  .vp-btn .ic {
+    width: 20px;
+    height: 20px;
+    display: block;
+    pointer-events: none;
+  }
+
+  /* Icon swaps via state class on .vp */
+  .ic-pause                           { display: none; }
+  .vp.playing .ic-play                { display: none; }
+  .vp.playing .ic-pause               { display: block; }
+
+  .ic-mute                            { display: none; }
+  .vp.muted   .ic-vol                 { display: none; }
+  .vp.muted   .ic-mute                { display: block; }
+
+  .ic-compress                        { display: none; }
+  .vp.fullscreen .ic-expand           { display: none; }
+  .vp.fullscreen .ic-compress         { display: block; }
+
+  /* ── Scrub / progress bar ─────────────────────────────── */
+  .vp-scrub {
+    flex: 1;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    outline: none;
+  }
+
+  .vp-track {
+    position: relative;
+    width: 100%;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.28);
+    border-radius: 2px;
+    transition: height 0.15s;
+  }
+  .vp-scrub:hover .vp-track { height: 5px; }
+
+  .vp-fill {
+    position: absolute;
+    inset: 0;
+    width: 0%;
+    background: #fff;
+    border-radius: 2px;
+  }
+
+  .vp-knob {
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #fff;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.15s;
+    pointer-events: none;
+  }
+  .vp-scrub:hover .vp-knob { transform: translate(-50%, -50%) scale(1); }
+
+  /* ── Timestamp ────────────────────────────────────────── */
+  .vp-time {
+    flex-shrink: 0;
+    font-size: 0.71rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.82);
+    font-family: var(--font, system-ui);
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+    line-height: 1;
+  }
+
+  /* ── Fullscreen ───────────────────────────────────────── */
+  .vp.fullscreen {
+    position: fixed !important;
+    inset: 0;
+    z-index: 9999;
+    border-radius: 0;
+    width: 100vw !important;
+    height: 100vh !important;
+  }
+  .vp.fullscreen video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  /* ── Feature pills ────────────────────────────────────── */
   .preview-pills {
     display: flex;
     flex-wrap: wrap;
@@ -140,9 +566,9 @@
   }
 
   .preview-pill svg { color: var(--success); flex-shrink: 0; }
-  .preview-pill--2 { animation-delay: 0.6s; }
-  .preview-pill--3 { animation-delay: 1.2s; }
-  .preview-pill--4 { animation-delay: 1.8s; }
+  .preview-pill--2  { animation-delay: 0.6s; }
+  .preview-pill--3  { animation-delay: 1.2s; }
+  .preview-pill--4  { animation-delay: 1.8s; }
 
   @media (max-width: 640px) {
     .preview-pills { gap: var(--sp-2); }
