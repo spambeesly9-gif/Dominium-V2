@@ -1,39 +1,42 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <!-- Dark navy background -->
-  <rect width="64" height="64" rx="12" fill="#000428"/>
+  <rect width="64" height="64" rx="10" fill="#000428"/>
 
-  <!-- Curved arrow: sweeps counterclockwise from upper-left around, arrowhead at bottom-left -->
+  <!-- Curved arrow: large arc sweeping counterclockwise around the house,
+       arrowhead at upper-left pointing upper-left -->
+  <!-- Arc path: start bottom-right of curve, sweep CCW to upper-left -->
   <path
-    d="M 18 12 A 22 22 0 1 0 13 42"
+    d="M 38 54 A 26 26 0 1 1 14 28"
     fill="none"
     stroke="white"
-    stroke-width="5"
+    stroke-width="4.5"
     stroke-linecap="round"
   />
-  <!-- Arrowhead at bottom of arc -->
+  <!-- Arrowhead at end of arc (upper-left area), pointing up-left -->
   <polyline
-    points="7,38 13,44 20,39"
+    points="21,18 14,27 24,31"
     fill="none"
     stroke="white"
-    stroke-width="5"
+    stroke-width="4.5"
     stroke-linecap="round"
     stroke-linejoin="round"
   />
 
-  <!-- House: peaked roof + body outline, shifted right-center -->
+  <!-- House outline: peaked roof + rectangular walls -->
+  <!-- Roof: peak at (38,14), left at (22,30), right at (54,30) -->
   <polyline
-    points="23,36 23,50 43,50 43,36"
+    points="22,30 38,14 54,30"
     fill="none"
     stroke="white"
-    stroke-width="4.5"
+    stroke-width="4"
     stroke-linecap="round"
     stroke-linejoin="round"
   />
+  <!-- Walls: left wall down, base across, right wall up -->
   <polyline
-    points="19,37 33,22 47,37"
+    points="26,30 26,50 50,50 50,30"
     fill="none"
     stroke="white"
-    stroke-width="4.5"
+    stroke-width="4"
     stroke-linecap="round"
     stroke-linejoin="round"
   />
